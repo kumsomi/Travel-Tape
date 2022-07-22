@@ -1,0 +1,29 @@
+.login{
+    border: 0.5rem solid var(--primary-color);
+    width: fit-content;
+    height: min-content;
+    display: flex;
+    margin: 3rem auto;
+    flex-direction: column;
+}
+.login-btn{
+    width: 90%;
+}
+.login>*{
+    font-size: large;
+    padding: 1rem;
+}
+
+.login-input{
+    padding: 0.5rem;
+}
+.form-div{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+.psw{
+    margin: 1rem;
+    text-decoration: underline;
+    cursor: pointer;
+}

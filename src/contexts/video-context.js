@@ -4,10 +4,8 @@ import axios from "axios";
 
 const initialVideos = {
 	videos: [],
-	error: null,
-	loading: true,
-	sortOption: null,
-	searchText: "",
+	videosError: null,
+	videosLoading: true,
 };
 const VideosContext = createContext(initialVideos);
 

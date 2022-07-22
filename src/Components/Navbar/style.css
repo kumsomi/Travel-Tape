@@ -1,0 +1,10 @@
+.navigation-bar{
+    background-color: var(--primary-color);   
+}
+.nav-heading{
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+.icon{
+    color:var(--secondary-color);
+}

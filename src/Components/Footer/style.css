@@ -1,5 +1,12 @@
 .footer{
-    background-color: var(--screen-color);
+    background-color: var(--primary-color);
     text-align: center;
     padding: 1rem;
+    display: flex;
+    justify-content: space-evenly;
+
+}
+.footer .icon{
+    display: flex;
+    /* justify-content: space-between; */
 }
