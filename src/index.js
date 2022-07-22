@@ -4,7 +4,8 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter} from "react-router-dom";
 import { makeServer } from "./server";
-import { CategoryProvider, VideosProvider } from "./contexts";
+import { AuthProvider, CategoryProvider } from "./contexts";
+// , VideosProvider
 // import { VideosProvider } from "./contexts";
 
 makeServer();
@@ -13,12 +14,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-    <CategoryProvider>
-      <VideosProvider>
-        <App/>
-     </VideosProvider>
-    </CategoryProvider>   
+    <AuthProvider>
+      <CategoryProvider>
+          <App/>
+      </CategoryProvider>
+    </AuthProvider>   
     </BrowserRouter>
   </React.StrictMode>,
-  // document.getElementById("root")
 );

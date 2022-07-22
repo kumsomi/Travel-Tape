@@ -1,0 +1,22 @@
+.app{
+    display: grid;
+    grid-template-rows: 10vh 80vh 10vh;
+    grid-template-areas: 
+    "first"
+    "second"
+    "third";
+}
+.nav-mode{
+    grid-area: first;
+    position: fixed;
+}
+.mode{
+    grid-area: second;
+    overflow: auto;
+}
+.footer-mode{
+    grid-area:third;
+}
+.icon:hover{
+    color: var(--cta-color);
+}

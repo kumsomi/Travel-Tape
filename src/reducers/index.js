@@ -1,4 +1,5 @@
 import {categoryReducerFunction} from "./categoryReducer";
 import { videosReducerFunction } from "./videosReducer";
+import { authReducerFunction, initialAuthState } from "./authReducer";
 
-export {categoryReducerFunction, videosReducerFunction};
+export {categoryReducerFunction, authReducerFunction, initialAuthState,videosReducerFunction};
