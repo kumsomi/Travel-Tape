@@ -5,9 +5,8 @@ import App from "./App";
 import { BrowserRouter} from "react-router-dom";
 import { makeServer } from "./server";
 import { CategoryProvider } from "./contexts";
-import { VideosProvider } from "./contexts/";
-// import {createRoot} from "react-dom";
-// Call make Server
+import { VideosProvider } from "./contexts";
+
 makeServer();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
