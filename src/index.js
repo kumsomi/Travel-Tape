@@ -4,8 +4,8 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter} from "react-router-dom";
 import { makeServer } from "./server";
-import { CategoryProvider } from "./contexts";
-import { VideosProvider } from "./contexts";
+import { CategoryProvider, VideosProvider } from "./contexts";
+// import { VideosProvider } from "./contexts";
 
 makeServer();
 
