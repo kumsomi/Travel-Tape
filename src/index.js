@@ -1,15 +1,25 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
+import { BrowserRouter} from "react-router-dom";
 import { makeServer } from "./server";
-
+import { CategoryProvider } from "./contexts";
+import { VideosProvider } from "./contexts/video-context";
+// import {createRoot} from "react-dom";
 // Call make Server
 makeServer();
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+    <CategoryProvider>
+      <VideosProvider>
+        <App/>
+     </VideosProvider>
+    </CategoryProvider>   
+    </BrowserRouter>
   </React.StrictMode>,
-  document.getElementById("root")
+  // document.getElementById("root")
 );

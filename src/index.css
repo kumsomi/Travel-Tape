@@ -1,3 +1,6 @@
+@import "https://bubble-ui.netlify.app/styles/component.css";
+@import url('https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner:wght@500&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap');
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -10,4 +13,19 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+:root{
+  --primary-color:#45396A;
+  --primary-color:black;
+  --screen-color:#E1BBC9;
+  --cta-color: #E1BBC9;
+  --cta-color:transparent;
+  font-family: 'Edu VIC WA NT Beginner', cursive;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+.btn:hover{
+  font-size: 2rem;
+  font-weight: 2rem;
+  border: 0.2rem solid ;
 }
