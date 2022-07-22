@@ -1,5 +1,5 @@
 import { createContext, useEffect, useReducer, useContext } from "react";
-import { categoryReducerFunction } from "../reducers/categoryReducer";
+import { categoryReducerFunction } from "../reducers";
 import axios from "axios";
 const initialCategories={
     category:[],
