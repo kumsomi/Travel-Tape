@@ -1,5 +1,8 @@
 const videosReducerFunction = (prevVideosState, { type, payload }) => {
+	// console.log("type",type, "payload:", payload);
+	// console.log("in reducer",prevVideosState);
 	switch (type) {
+
 		case 'SUCCESS':
 			return {
 				...prevVideosState,

@@ -1,27 +1,41 @@
-import { Link } from "react-router-dom";
-import { usePageTitle } from "../../../custom-hooks";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { React, useEffect, useReducer, useState } from "react";
+import { signupService } from "../../../service";
+import { usePageTitle, useToast } from "../../../custom-hooks";
+import { useAuth } from "../../../contexts";
 const Signup=()=>{
 
-    usePageTitle('Travel Tape | Login');
+    usePageTitle('Travel Tape | Sign up');
 
+
+    
+    
     return(
     <div class="login">
         <h3>Signup page</h3>
         <div>
-            <form action="" className="form">
+            <form className="form" 
+            // onSubmit={handleFormSubmit}
+            >
                 <div class="form-div">
                 <label htmlFor="">Email address</label>
-                <input type="email" className="login-input primary-color"/>
+                <input type="email" className="login-input primary-color"
+                    // onChange={handleFormDataChange}
+                    // value={email}
+                />
                 </div>
                 <div class="form-div">
                 <label htmlFor="">Password
                 </label>
-                <input type="password" className="login-input primary-color"/>
+                <input type="password" className="login-input primary-color"
+                    // onChange={handleFormDataChange}
+                    // value={password}
+                />
                 </div>
                 <div class="form-div">
-                <label>
+                {/* <label>
                 <input type="checkbox" name="remember"/> Remember me
-                </label>
+                </label> */}
                 <div class="psw" >Forgot password?</div>
                 </div>
                 <button className="btn primary-btn login-btn">Signup</button>

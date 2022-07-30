@@ -1,0 +1,7 @@
+.single-video{
+    width: max(40rem);
+    /* margin: auto; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+}
