@@ -1,6 +1,5 @@
 import {Routes, Route, useLocation} from "react-router-dom";
-import {Login, Signup, Explore, History, Home, Likes, NotFound, Playlist, PlaylistVideos, SingleVideo, WatchLater} from "../pages";
-// import { Footer, Navbar } from "../Components";
+import {Login, Signup, Explore, History, Home, Likes, NotFound, Playlist, PlaylistVideos, SingleVideo, WatchLater, Profile} from "../pages";
 import {ProtectedRoutes} from "./ProtectedRoutes";
 
 const NavRoutes=()=>{
@@ -18,15 +17,16 @@ const NavRoutes=()=>{
         <Route path="/explore/:videoId" element={<SingleVideo/>}/>
         <Route path="*" element={<NotFound/>}/>
         <Route path="/" element={<ProtectedRoutes />}>
-			<Route path="/watchlater" element={<WatchLater />} />
-			<Route path="/likes" element={<Likes />} />
-		    <Route path="/playlists" element={<Playlist />} />
-    		<Route
-    			path="/playlists/:playlistsId"
-    			element={<PlaylistVideos />}
-    		/>
-    		<Route path="/history/" element={<History />} />
-		</Route>
+          <Route path="/watchlater" element={<WatchLater />} />
+          <Route path="/likes" element={<Likes />} />
+          <Route path="/playlists" element={<Playlist />} />
+          <Route
+            path="/playlists/:playlistsId"
+            element={<PlaylistVideos />}
+          />
+          <Route path="/history/" element={<History />} />
+          <Route path="/profile" element={<Profile/>} />
+        </Route>
       </Routes>
 )
 }

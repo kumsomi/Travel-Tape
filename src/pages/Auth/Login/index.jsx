@@ -9,7 +9,6 @@ import "../style.css";
 const Login = () => {  
     usePageTitle('Travel Tape | Login');
 
-
     const initialFormData = {
 		email: "",
 		password: "",
@@ -49,8 +48,8 @@ const Login = () => {
 		event.preventDefault();
 		try {
 			const { data } = await loginService(formData);
-
 			const { encodedToken, foundUser } = data;
+			
 			authDispatch({
 				action: {
 					type: "AUTH_LOADING",
@@ -70,9 +69,12 @@ const Login = () => {
 					"user",
 					JSON.stringify(foundUser)
 				);
+				localStorage.setItem("travel-tape-token", encodedToken);
+				localStorage.setItem("travel-tape-user",JSON.stringify(foundUser));
 			}
 
 			setFormData(initialFormData);
+			
 			showToast("Login successfull.", "success");
 			authDispatch({
 				action: {
@@ -85,7 +87,7 @@ const Login = () => {
 			setIsLoggingIn(false);
 			if (error.message.includes("404"))
 				showToast("Username not found!", "error");
-			else showToast("Login Failed. Please try again later", "error");
+			else showToast(`Login Failed. Please try again later:${error}`, "error");
 		}
 	};
 
@@ -98,6 +100,7 @@ const Login = () => {
 			password: process.env.REACT_APP_GUEST_USER_PASSWORD,
 			rememberMe: true,
 		});
+		showToast("credentials set","info");
 	};
 
 
