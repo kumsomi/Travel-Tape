@@ -9,8 +9,8 @@ const Signup=()=>{
     usePageTitle('Travel Tape | Login');
 
     const initialFormData = {
-        firstname:"",
-        lastname:"",
+        firstName:"",
+        lastName:"",
 		email: "",
 		password: "",
 	};
@@ -26,11 +26,11 @@ const Signup=()=>{
 
     useEffect(() => {
 		if (isAuth) {
-			navigate(location?.state?.from ?? "/", { replace: true });
+			navigate(location?.state?.from ?? "/login", { replace: true });
 		}
     },[]);
 
-    const {firstname, lastname, email, password}=formData;
+    const {firstName, lastName, email, password}=formData;
 
     const handleFormDataChange = (event) => {
 		const { name, value } = event.target;
@@ -49,7 +49,7 @@ const Signup=()=>{
 					payload: { authUser: createdUser, authToken: encodedToken },
 				},
 			});
-            console.log("created user in signup=",createdUser,encodedToken);
+            // console.log("created user in signup=",createdUser,encodedToken);
             setFormData(initialFormData);
 			showToast("Sign up successful!", "success");
             navigate(location?.state?.from ?? "/login", { replace: true });
@@ -80,17 +80,17 @@ const Signup=()=>{
                 <div class="form-div">
                 <label htmlFor="">First Name</label>
                 <input type="text" className="login-input primary-color"
-                    name="firstname"
+                    name="firstName"
                     onChange={handleFormDataChange}
-                    value={firstname}
+                    value={firstName}
                 />
                 </div>
                 <div class="form-div">
                 <label htmlFor="">Last Name</label>
                 <input type="text" className="login-input primary-color"
-                    name="lastname"
+                    name="lastName"
                     onChange={handleFormDataChange}
-                    value={lastname}
+                    value={lastName}
                 />
                 </div>
                 <div class="form-div">

@@ -5,28 +5,33 @@ import {AiFillLike} from "react-icons/ai";
 import {IoMdHome} from "react-icons/io";
 import {MdOutlineExplore} from "react-icons/md";
 import {AiOutlineClockCircle} from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 const Footer=()=>{
+    const getActiveStyle = ({ isActive }) => ({
+        padding: isActive ? "0.3rem" : "",
+        border:isActive ? "1px solid white":"",
+    });
+
     return(
-    <div className="footer h-2">
-        <Link to="/">
-            <IoMdHome className="icon" />
-        </Link>
-        <Link to="/explore">
+    <div className="footer h-2" >
+        <NavLink to="/" style={getActiveStyle} >
+            <IoMdHome className="icon"/>
+        </NavLink>
+        <NavLink to="/explore" style={getActiveStyle}>
             <MdOutlineExplore className="icon" />
-        </Link>
-        <Link to="/playlists">
+        </NavLink>
+        <NavLink to="/playlists" style={getActiveStyle}>
             <MdOutlineVideoLibrary className="icon" />
-        </Link>
-        <Link to="/likes">
+        </NavLink>
+        <NavLink to="/likes" style={getActiveStyle}>
             <AiFillLike className="icon" />
-        </Link>
-        <Link to="/watchlater">
+        </NavLink>
+        <NavLink to="/watchlater" style={getActiveStyle}>
             <AiOutlineClockCircle className="icon" />
-        </Link>
-        <Link to="/history">
-            <FaHistory className="icon" />
-        </Link>
+        </NavLink>
+        <NavLink to="/history" style={getActiveStyle}>
+            <FaHistory className="icon"  />
+        </NavLink>
     </div>
     );
 }

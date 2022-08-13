@@ -7,7 +7,7 @@ import { useToast } from "../../custom-hooks";
 
 const Navbar=()=>{
 
-    const { isAuth, authDispatch } = useAuth();
+    const { isAuth, authUser } = useAuth();
 	// const navigate = useNavigate();
     
     // const {showToast}=useToast();
@@ -33,15 +33,14 @@ const Navbar=()=>{
 						// 	</button>
                             
 						// </li>
-                        <Link to="/profile">
-                            <FaUserAlt className="icon h-4" />
-                            <span></span>
+                        <Link to="/profile" className="icon h-4 nav-user-icon no-link">
+                            <FaUserAlt  />
+                            <div>{authUser.firstName}</div>
                         </Link>
 					) : (
-						<Link to="/login">
-                            {/* <FaUserAlt className="icon h-4" /> */}
-                            <BiLogIn className="icon h-4"/>
-                            <div className="h-4">{isAuth}</div>
+						<Link to="/login" className="icon h-4 nav-user-icon no-link">
+                            <BiLogIn />
+                            <div>Login</div>
                         </Link>
 					)}
                 </ul> 

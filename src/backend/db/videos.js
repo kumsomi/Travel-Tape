@@ -26,7 +26,7 @@ export const videos = [
 
   },
   {
-    _id:"",
+    _id:"XncoZAkq_Qs",
     categoryName:"Solo Travel",
     views: 518759,
     dateAdded: "April 24, 2018",
@@ -37,7 +37,7 @@ export const videos = [
 
   },
   {
-    _id:"JJnPnni_jmE&t=761s",
+    _id:"JJnPnni_jmE",
     categoryName:"Adventure",
     views:414324,
     dateAdded:"February 15, 2021",

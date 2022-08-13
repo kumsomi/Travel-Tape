@@ -1,4 +1,4 @@
-import { Loader, videoListing } from "../../Components";
+import { Loader, VideoListing } from "../../Components";
 import { useCategory,  useVideos } from "../../contexts";
 import { usePageTitle } from "../../custom-hooks";
 const Explore=()=>{
@@ -16,23 +16,19 @@ const Explore=()=>{
 
     usePageTitle('Travel Tape | Home');
 
-
     return(
-        // <main className="main explore-main">
-		// 	{videosError || categoryError ? (
-		// 		<h3 className="text-center mx-auto px-3 error-color">
-		// 			Videos could not be loaded. Try again after sometime.
-		// 		</h3>
-		// 	) : videosLoading || categoryLoading ? (
-		// 		<Loader/>
-		// 	) : (
-        //         <div>
-        //             <videoListing videos={videos}/>
-        //         </div>
-        //     )
-        //     }
-        // </main>
-        <div>Explore</div>
+        <main className="main explore-main">
+            <div className="h-3 p-2">Explore Videos...</div>
+            {videosError || categoryError ? (
+                <h3 className="text-center mx-auto px-3 error-color">
+                    Videos could not be loaded. Try again after sometime.
+                </h3>
+            ) 
+            : (
+            <VideoListing videos={videos} className="videos"/>
+            )}
+        </main>
+        // <div>Explore</div>
     )
 }
 export {Explore};

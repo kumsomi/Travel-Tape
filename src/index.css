@@ -16,17 +16,12 @@ code {
 }
 
 :root{
-  --primary-color:#45396A;
+  --cta-color:#564882;
   --primary-color:black;
   --screen-color:#E1BBC9;
-  --cta-color: #E1BBC9;
+  /* --cta-color: #E1BBC9; */
   --secondary-color: white;
   /* --cta-color:transparent; */
   font-family: 'Edu VIC WA NT Beginner', cursive;
   font-family: 'Source Sans Pro', sans-serif;
-}
-.btn:hover{
-  font-size: 2rem;
-  font-weight: 2rem;
-  border: 0.2rem solid ;
 }

@@ -8,3 +8,6 @@
 .icon{
     color:var(--secondary-color);
 }
+.nav-user-icon{
+    text-align: center;
+}
