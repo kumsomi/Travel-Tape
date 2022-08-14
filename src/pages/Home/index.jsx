@@ -1,9 +1,5 @@
-// import { useToast } from "react-toastify";
-// import { toast, ToastContainer} from "react-toastify";
 import { CategoryList, Header} from "../../Components";
-import { usePageTitle, useToast} from "../../custom-hooks";
-// 
-// import 'react-toastify/dist/ReactToastify.minimal.css';
+import { usePageTitle} from "../../custom-hooks";
 
 const Home=()=>{
     usePageTitle('Travel Tape | Home');
