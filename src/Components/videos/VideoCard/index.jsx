@@ -1,3 +1,4 @@
+
 import { getFormattedViews, findVideoInList, likeVideoServiceCall, watchLaterServiceCall } from "../../../utils";
 import "./style.css";
 import {BsThreeDotsVertical} from "react-icons/bs";
@@ -10,6 +11,7 @@ import { deleteVideoFromHistoryService, deleteVideoFromPlaylistService } from ".
 import { PlaylistModal } from "../../Playlist";
 
 const VideoCard=({video})=>{
+
     const{
             _id:videoId,
             title:videoTitle,
@@ -27,6 +29,7 @@ const VideoCard=({video})=>{
 		.split(" ", 4)
 		.join(" ");
     const [isOpenOptions, setIsOpenOptions]=useState(false);
+
     
     const { isAuth, authToken } = useAuth();
 	const { userDataDispatch, watchlater, userDataLoading, likes } = useUserData();
@@ -156,19 +159,23 @@ const VideoCard=({video})=>{
             <div className="video-card">
                 <NavLink to={`/explore/${videoId}`} className="no-link">
 
+
                 <div className="video-card-header">
                     <img src={imgsrc} alt={`${videoTitle} cover`} className="video-img"/>
                 </div>
                 </NavLink>
                 <div className="video-card-body">
+
                     <img src={video.logo} alt={`${video.creator}`} className="badge-circle s creator-logo"/>
                     <div className="video-info">
                         <div className="video-title">{video.title}</div>
+
                         <div>{video.creator}</div>
                         <div>
                             {getFormattedViews(views)} 
                             <span className="views"> {dateReleased}</span>
                         </div>
+
                     </div>
                     <div className="icon-btn option-link" onClick={optionsHandler}>
                         <BsThreeDotsVertical/>
@@ -200,6 +207,7 @@ const VideoCard=({video})=>{
 
             </div>
         </>
+
     );
 }
 export {VideoCard};

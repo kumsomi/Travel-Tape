@@ -76,7 +76,4 @@ export const videos = [
     description:"Rs. 30,000 for a 6 day trip to the beautiful city of Paris.",
     logo:"https://yt3.ggpht.com/ytc/AKedOLSXDQT_t4cYk0Fp2RQqqYsw-fl-Vyq-nXtaAcKb=s176-c-k-c0x00ffffff-no-rj",
   },
-  
-
-
 ];

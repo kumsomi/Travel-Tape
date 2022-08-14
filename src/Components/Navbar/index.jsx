@@ -5,6 +5,7 @@ import "./style.css";
 import { useAuth } from "../../contexts";
 import { useToast } from "../../custom-hooks";
 
+
 const Navbar=()=>{
 
     const { isAuth, authUser } = useAuth();
@@ -13,6 +14,7 @@ const Navbar=()=>{
     // const {showToast}=useToast();
 
     
+
 
     return(
         <nav className="navigation-bar p-1 h-3">
@@ -24,6 +26,7 @@ const Navbar=()=>{
                     
                     
                     {isAuth ? (
+
 						// <li>
 						// 	<button
 						// 		className="btn btn-primary btn-icon btn-logout text-sm"
@@ -41,6 +44,7 @@ const Navbar=()=>{
 						<Link to="/login" className="icon h-4 nav-user-icon no-link">
                             <BiLogIn />
                             <div>Login</div>
+
                         </Link>
 					)}
                 </ul> 

@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 import { videosReducerFunction } from "../reducers";
 import axios from "axios";
+import { getVideos } from "../service";
 
 const initialVideos = {
 	videos: [],
@@ -9,18 +10,15 @@ const initialVideos = {
 };
 const VideosContext = createContext(initialVideos);
 
-
 const VideosProvider = ({ children }) => {
 	const [videosState, videosDispatch] = useReducer(
 		videosReducerFunction,
 		initialVideos
 	);
 
-	const getVideos = async () => {
+	const getVideosService = async () => {
 		try {
-			const {
-				data: { videos },
-			} = await axios.get('/api/videos');
+			const { data: { videos }} = await axios.get('/api/videos');
 
 			videosDispatch({
 				type: "SUCCESS",
@@ -31,10 +29,11 @@ const VideosProvider = ({ children }) => {
 				type: "ERROR",
 			});
 		}
+
 	};
 
 	useEffect(() => {
-		getVideos();
+		getVideosService();
 	}, []);
 
 	return (

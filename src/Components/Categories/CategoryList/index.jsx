@@ -16,10 +16,12 @@ const CategoryList=()=>{
 				<Loader />
 			) : categoryError ? (
 				<h3 className="error-color">{categoryError}</h3>
-			) : (<div className="category-cards">
+			) : (
+                <div className="category-cards">
                     {category.map((item)=>(
-                        // <div>item</div>
+                        // <>{console.log(category)}
                     <CategoryItem category={item} key={item._id}/>
+                        // </>
                     ))}
                 </div>
             )}

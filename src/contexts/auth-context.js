@@ -9,8 +9,10 @@ const AuthProvider = ({ children }) => {
 	const setInitialAuthState = () => {
 		const travelTapeToken = localStorage.getItem("travel-tape-token");
 		const travelTapeUser = localStorage.getItem("travel-tape-user");
+
 		
 		// console.log("in context: ", travelTapeUser);
+
 
 		if (travelTapeToken) {
 			return {

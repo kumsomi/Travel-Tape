@@ -1,4 +1,5 @@
 .video-card{
+
     padding: 1rem;
     width: 25rem;
     font-weight:500;
@@ -11,6 +12,7 @@
 .video-img{
     width: 100%;
     border-radius: 0.5rem;
+
 }
 .video-img:hover{
     transition: scale(1.3);
@@ -18,6 +20,7 @@
 .video-card-body{
     display: flex;
     flex-direction: row;
+
     padding: 0.5rem;
 }
 .video-card-body>*{
@@ -25,14 +28,15 @@
 }
 .video-info{
     overflow: hidden;
+
 }
 .video-title{
     font-size: 1.5rem;
     font-weight: bolder;
-    /* text-overflow: ellipsis; */
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+
 }
 .views{
     margin-left: 1rem;
@@ -40,6 +44,7 @@
 
 .icon-btn:hover{
     color: var(--primary-color);
+
 }
 
 .option-link{
@@ -70,4 +75,5 @@
     background-color: var(--cta-color);
     color:var(--primary-color);
     border-radius: 0.5rem;
+
 }
