@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { useAuth, useUserData, useVideos } from "../../contexts";
+import { useAuth, useCategory, useUserData, useVideos } from "../../contexts";
 import { usePageTitle, useToast } from "../../custom-hooks";
 import YouTube from 'react-youtube';
 import { findVideoInList, getFormattedViews, likeVideoServiceCall, watchLaterServiceCall } from "../../utils";
@@ -7,14 +7,20 @@ import { useEffect, useState } from "react";
 import { postVideoToHistoryService } from "../../service";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import {AiFillLike} from "react-icons/ai";
-import {AiFillDislike } from "react-icons/ai";
+
+import {AiOutlineLike } from "react-icons/ai";
 import {MdPlaylistAdd} from "react-icons/md";
 import {BsFillClockFill} from "react-icons/bs";
 import "./style.css";
 import { PlaylistModal } from "../../Components/Playlist";
+import { VideoListing } from "../../Components";
+
 const SingleVideo=()=>{
+
     usePageTitle('Travel Tape | Playlists');
-    const { videosError, videosLoading, videos } = useVideos();
+    
+	const {categoryError}= useCategory();
+	const { videosError, videosLoading, videos } = useVideos();
     const { watchlater, likes, userDataDispatch, userDataLoading } =useUserData();
     const { videoId } = useParams();
     const navigate = useNavigate();
@@ -141,6 +147,7 @@ const SingleVideo=()=>{
 	}, [videoToBeDisplayed]);
 
     return(
+		<div className="flex flex-wrap">
         <div className="single-video-container">
             {showPlaylistModal ? (<PlaylistModal video={videoToBeDisplayed} setShowPlaylistModal={setShowPlaylistModal}/>):(null)}
 
@@ -152,7 +159,7 @@ const SingleVideo=()=>{
                 {videoToBeDisplayed.title}
             </h3>
 
-            <div className="single-video-info h-4"> 
+            <div className="single-video-info h-4 fw-800"> 
                 <img src={videoToBeDisplayed.logo} alt={`${videoToBeDisplayed.creator}`} className="badge-circle s creator-logo"/>
                 <div className="creator-name">{videoToBeDisplayed.creator}</div>
             </div>
@@ -164,15 +171,15 @@ const SingleVideo=()=>{
             </div>
             </div>
             <div className="m-1">
-                <span className="single-video-btn" onClick={handleLikedVideoChange}>
+                <span className={isVideoInLikes? "single-video-btn single-video-active-btn":"single-video-btn "} onClick={handleLikedVideoChange}>
                 { isVideoInLikes ? (<>
-                    <AiFillDislike className="icon-video-btn"/> Dislike</>
+                    < AiFillLike className="icon-video-btn "/>Liked</>
                     ):(<>
-                    <AiFillLike className="icon-video-btn" />Like</>
+                    <AiOutlineLike className="icon-video-btn" />Like</>
                     )
                 }
                 </span>
-                <span className="single-video-btn" onClick={handleWatchLaterChange}>
+                <span className={isVideoInWatchLater ?"single-video-btn single-video-active-btn": "single-video-btn"} onClick={handleWatchLaterChange}>
                 {isVideoInWatchLater ? 
                     (<><BsFillClockFill/> In-WatchLater</>):
                     (<><AiOutlineClockCircle className="icon-video-btn" />Add to WatchLater</>)
@@ -187,6 +194,17 @@ const SingleVideo=()=>{
                 {videoToBeDisplayed.description}
             </div>
         </div>
+		<div>
+		{videosError || categoryError ? (
+                <h3 className="text-center mx-auto px-3 error-color">
+                    Videos could not be loaded. Try again after sometime.
+                </h3>
+            ) 
+            : (
+            <VideoListing videos={videos} className="videos"/>
+            )}
+		</div>
+	</div>
     )
 }
 export {SingleVideo};

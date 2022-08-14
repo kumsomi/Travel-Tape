@@ -22,9 +22,7 @@ const Login = () => {
 
 	const [isLoggingIn, setIsLoggingIn] = useState(false);
 
-	const { authDispatch, isAuth, 
-		// authLoading 
-	} = useAuth();
+	const { authDispatch, isAuth, authLoading } = useAuth();
 	const { showToast } = useToast();
 
 
@@ -35,17 +33,18 @@ const Login = () => {
 	}, []);
 
 	const handleFormDataChange = (event) => {
-		const { name, value, checked} = event.target;
+		const { name, value, checked } = event.target;
 
 		setFormData((prevFormData) => ({
 			...prevFormData,
-			[name]: name === "rememberMe" ? checked :value,
+			[name]: name === "rememberMe" ? checked : value,
 		}));
 	};
 
 	
 
 	const handleFormSubmit = async (event) => {
+		setIsLoggingIn(true);
 		event.preventDefault();
 		try {
 			const { data } = await loginService(formData);
@@ -65,9 +64,9 @@ const Login = () => {
 				},
 			});
 			if (rememberMe) {
-				localStorage.setItem("travel-tape-token", encodedToken);
+				localStorage.setItem("token", encodedToken);
 				localStorage.setItem(
-					"travel-tape-user",
+					"user",
 					JSON.stringify(foundUser)
 				);
 				localStorage.setItem("travel-tape-token", encodedToken);
@@ -92,7 +91,7 @@ const Login = () => {
 		}
 	};
 
-	const { email, password, rememberMe} = formData;
+	const { email, password, rememberMe } = formData;
 	// setShowPassword((prevShowPassword) => !prevShowPassword);
 
 	const handleLoginWithTestCredentials = (event) => {
@@ -109,9 +108,9 @@ const Login = () => {
     <div class="login">
       <h3>Login page</h3>
       <div>
-        <form className="form" onSubmit={handleFormSubmit}>
+        <form action="" className="form" onSubmit={handleFormSubmit}>
             <div class="form-div">
-                <label htmlFor="input-login-email">Email address</label>
+                <label htmlFor="">Email address</label>
                 <input 
                     type="email" 
                     name="email"
@@ -125,7 +124,7 @@ const Login = () => {
                 />
             </div>
             <div class="form-div">
-                <label htmlFor="input-login-psd">Password</label>
+                <label htmlFor="">Password</label>
                 <input 
                     type="password" 
                     id="input-login-psd"
@@ -135,11 +134,10 @@ const Login = () => {
                     value={password}
                     onChange={handleFormDataChange}
                     required            
-                    className="login-input primary-color"
-                />
+                    className="login-input primary-color"/>
             </div>
             <div class="form-div">
-                <label htmlFor="checkbox-remember">
+                <label>
                     <input 
                         type="checkbox" 
                         id="checkbox-remember"
@@ -149,7 +147,7 @@ const Login = () => {
                         onChange={handleFormDataChange}
                     /> Remember me
                 </label>
-            {/* <div class="psw" >Forgot password?</div> */}
+            <div class="psw" >Forgot password?</div>
             </div>
             
             <input 

@@ -6,6 +6,10 @@
     "second"
     "third";
 }
+.btn:hover{
+    background-color: var(--cta-color);
+    color: var(--secondary-color);
+}
 .nav-mode{
     grid-area: first;
     position: fixed;

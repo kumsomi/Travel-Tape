@@ -4,14 +4,19 @@
     margin: auto;
 }
 .single-video-btn{
-    font-size: 2rem;
-    padding: 0.5rem;
+    font-size: 1.4rem;
+    padding: 0.5rem 1rem;
     margin: 1rem;
     border-radius: 1rem;
+    background-color: gainsboro;
 }
 .single-video-btn:hover{
     background-color: var(--cta-color);
     cursor: pointer;
+}
+.single-video-active-btn{
+    background-color: var(--cta-color);
+    color: var(--secondary-color);
 }
 .icon-video-btn{
     font: rem;
