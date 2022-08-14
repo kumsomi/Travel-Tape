@@ -1,3 +1,4 @@
+
 .single-video-container{
     width: min-content;
     margin: auto;
@@ -20,4 +21,5 @@
 }
 .single-video-info{
     display: inline-flex;
+
 }

@@ -182,6 +182,7 @@ const SingleVideo=()=>{
                     <MdPlaylistAdd className="icon-video-btn"/> Save
                 </span>
             </div>
+
             <div>
                 {videoToBeDisplayed.description}
             </div>
