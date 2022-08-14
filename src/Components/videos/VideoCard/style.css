@@ -1,17 +1,18 @@
 .video-card{
-    /* padding: 1rem; */
-    width: 30rem;
+
+    padding: 1rem;
+    width: 25rem;
     font-weight:500;
     margin: 1rem;
-    border: 1px solid;
+    height: fit-content;
+    flex-grow: 1;
+    flex-shrink: 1;
 }
 
-.video-card-header{
-    /* align-items: center; */
-    /* width: fit-content; */
-}
 .video-img{
     width: 100%;
+    border-radius: 0.5rem;
+
 }
 .video-img:hover{
     transition: scale(1.3);
@@ -19,12 +20,23 @@
 .video-card-body{
     display: flex;
     flex-direction: row;
-    /* width: fit-content; */
+
+    padding: 0.5rem;
+}
+.video-card-body>*{
+    margin: 0.5rem;
+}
+.video-info{
+    overflow: hidden;
+
 }
 .video-title{
     font-size: 1.5rem;
     font-weight: bolder;
+    overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
+
 }
 .views{
     margin-left: 1rem;
@@ -32,4 +44,36 @@
 
 .icon-btn:hover{
     color: var(--primary-color);
+
+}
+
+.option-link{
+    border: none;
+    background: var(--cta-color);
+    height: fit-content;
+    border-radius: 50%;
+    padding: 1rem;
+    color: white;
+    position: relative;
+}
+.option-wrapper{
+    width: max-content;
+    right: 0;
+    position: absolute;
+    background: rgb(17, 17, 17);
+    text-shadow: none;
+    border-radius: 0.5rem;
+}
+.option-item{
+    font-size: 1.5rem;
+    text-align: center;
+    color: var(--secondary-color);
+    cursor: pointer;
+    padding: 1rem;
+}
+.option-item:hover{
+    background-color: var(--cta-color);
+    color:var(--primary-color);
+    border-radius: 0.5rem;
+
 }

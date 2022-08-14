@@ -1,12 +1,14 @@
-import { getFormattedViews } from "../../../utils";
+
+import { getFormattedViews, findVideoInList, likeVideoServiceCall, watchLaterServiceCall } from "../../../utils";
 import "./style.css";
 import {BsThreeDotsVertical} from "react-icons/bs";
-import { useState } from "react";
-import { VideoOptions } from "../VideoOptions";
+import { useEffect, useRef, useState } from "react";
+// import { VideoOptions } from "../VideoOptions";
 import { NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
-import { useAuth } from "../../../contexts";
-import { useToast } from "react-toastify";
-
+import { useOutsideClick, useToast } from "../../../custom-hooks";
+import { useAuth, useUserData } from "../../../contexts";
+import { deleteVideoFromHistoryService, deleteVideoFromPlaylistService } from "../../../service";
+import { PlaylistModal } from "../../Playlist";
 
 const VideoCard=({video})=>{
 
@@ -27,38 +29,184 @@ const VideoCard=({video})=>{
 		.split(" ", 4)
 		.join(" ");
     const [isOpenOptions, setIsOpenOptions]=useState(false);
+
+    
+    const { isAuth, authToken } = useAuth();
+	const { userDataDispatch, watchlater, userDataLoading, likes } = useUserData();
+	const navigate = useNavigate();
+    const { showToast } = useToast();
+	const location = useLocation();
+	const { playlistsId } = useParams();
+	const [showPlaylistModal, setShowPlaylistModal] = useState(false);
+    
+    const isVideoInWatchLater = findVideoInList(watchlater, video);
+	const isVideoInLikes = findVideoInList(likes, video);
+	const videoOptionsReference = useRef(null);
+    const [isOnGoingNetworkCall, setIsOnGoingNetworkCall] = useState(false);
+
     const optionsHandler=()=>{
         setIsOpenOptions((prev)=>!prev)
     }
-    return(
 
+
+    const handleWatchLaterChange = async (e) => {
+		e.stopPropagation();
+		e.preventDefault();
+
+		if (!isAuth) {
+			showToast("Login to add the video to watch later.", "info");
+			navigate("/login", { state: { from: "/explore" }, replace: true });
+		} else {
+			setIsOnGoingNetworkCall(true);
+			await watchLaterServiceCall(
+				showToast,
+				userDataDispatch,
+				isVideoInWatchLater,
+				authToken,
+				video
+			);
+			setIsOnGoingNetworkCall(false);
+		}
+		setIsOpenOptions(false);
+
+	};
+
+
+    const handleLikedVideoChange = async (e) => {
+		e.stopPropagation();
+		e.preventDefault();
+
+		if (!isAuth) {
+			showToast("Login to add the video to likes.", "info");
+			navigate("/login", { state: { from: "/explore" }, replace: true });
+		} else {
+			setIsOnGoingNetworkCall(true);
+			await likeVideoServiceCall(
+				showToast,
+				userDataDispatch,
+				isVideoInLikes,
+				authToken,
+				video
+			);
+			setIsOnGoingNetworkCall(false);
+		}
+		setIsOpenOptions(false);
+	};
+
+	const handleShowPlaylistModal = (e) => {
+		e.preventDefault();
+		e.stopPropagation();
+
+		if (!isAuth) {
+			showToast("Login to add the video to a playlist.", "info");
+			navigate("/login", { state: { from: "/explore" }, replace: true });
+		} else 
+        setShowPlaylistModal(true);
+	};
+
+	const handleDeleteVideoFromHistory = async (e) => {
+		e.preventDefault();
+		e.stopPropagation();
+
+		setIsOnGoingNetworkCall(true);
+
+		try {
+			const {
+				data: { history },
+			} = await deleteVideoFromHistoryService(authToken, videoId);
+			userDataDispatch({ type: "SET_HISTORY", payload: { history } });
+			showToast("Removed video from history.", "success");
+		} catch (error) {
+			showToast("Failed to remove video from history.", "error");
+		}
+
+		setIsOnGoingNetworkCall(false);
+	};
+
+	const handleDeleteVideoFromPlaylist = async (e) => {
+		e.stopPropagation();
+		e.preventDefault();
+
+		setIsOnGoingNetworkCall(true);
+		try {
+			const {
+				data: { playlist: updatedPlaylist },
+			} = await deleteVideoFromPlaylistService(
+				authToken,
+				playlistsId,
+				videoId
+			);
+			userDataDispatch({
+				type: "UPDATE_PLAYLISTS",
+				payload: { playlist: updatedPlaylist },
+			});
+			showToast("Video removed from playlist.", "success");
+		} catch (error) {
+			setIsOnGoingNetworkCall(false);
+			showToast("Failed to remove video playlist.", "error");
+		}
+	};
+	
+    return(
+        <>
+
+            {showPlaylistModal ? (
+            <PlaylistModal 
+			// video={video} setShowPlaylistModal={setShowPlaylistModal} 
+			/>
+            ):null}
+			
             <div className="video-card">
-            <NavLink to={`/explore/${videoId}`} className="no-link">
+                <NavLink to={`/explore/${videoId}`} className="no-link">
+
 
                 <div className="video-card-header">
                     <img src={imgsrc} alt={`${videoTitle} cover`} className="video-img"/>
                 </div>
                 </NavLink>
                 <div className="video-card-body">
-                    <img src={video.logo} class="badge-circle s creator-logo"/>
+
+                    <img src={video.logo} alt={`${video.creator}`} className="badge-circle s creator-logo"/>
                     <div className="video-info">
-                        <div class="video-title">{video.title}</div>
+                        <div className="video-title">{video.title}</div>
+
                         <div>{video.creator}</div>
                         <div>
                             {getFormattedViews(views)} 
                             <span className="views"> {dateReleased}</span>
                         </div>
-                        
-                        
-                    </div>
-                    <div className="icon-btn" onClick={optionsHandler}>
-                        <BsThreeDotsVertical/>
-                    </div>
 
+                    </div>
+                    <div className="icon-btn option-link" onClick={optionsHandler}>
+                        <BsThreeDotsVertical/>
+						<div className="option-wrapper">
+							{isOpenOptions ?
+								(
+									<div className="video-options" ref={videoOptionsReference}>
+										<div className="option-item" onClick={handleWatchLaterChange}>
+											{isVideoInWatchLater ?
+												(<div>Remove from watch later</div>):
+												(<div >Add to watch later</div>)
+											}
+										</div>
+										<div className="option-item" onClick={handleLikedVideoChange}>
+											{ isVideoInLikes?(<div>Remove From Likes</div>):(<div>Add to Likes</div>)
+											}
+										</div>
+										<div className="option-item" onClick={handleShowPlaylistModal}>
+											Add to playlist
+										</div>
+									</div>
+								):null
+							}
+						</div>
+                    </div>
                 </div>
-                {isOpenOptions && <VideoOptions/>}
+				<div>
+				</div>
 
             </div>
+        </>
 
     );
 }

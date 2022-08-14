@@ -8,4 +8,9 @@
 }
 .footer .icon{
     display: flex;
+    /* justify-content: space-between; */
+}
+.activeClassName{
+    color: aqua;
+
 }

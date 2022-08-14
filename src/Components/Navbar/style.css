@@ -1,5 +1,6 @@
 .navigation-bar{
-    background-color: var(--primary-color);   
+    background-color: var(--primary-color);  
+    border-bottom: 0; 
 }
 .nav-heading{
     color: var(--secondary-color);
@@ -7,4 +8,7 @@
 }
 .icon{
     color:var(--secondary-color);
+}
+.nav-user-icon{
+    text-align: center;
 }

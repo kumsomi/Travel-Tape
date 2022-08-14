@@ -3,7 +3,6 @@ import { toast } from "react-toastify";
 
 const useToast = () => {
 	const showToast = (toastText="Operation Successfull", toastTheme="success") => {
-			
 		toast[toastTheme](toastText, {
             theme: "colored",
 			position: "top-right",

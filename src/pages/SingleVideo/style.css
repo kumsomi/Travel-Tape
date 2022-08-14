@@ -1,7 +1,25 @@
-.single-video{
-    width: max(40rem);
-    /* margin: auto; */
-    display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
+
+.single-video-container{
+    width: min-content;
+    margin: auto;
+}
+.single-video-btn{
+    font-size: 2rem;
+    padding: 0.5rem;
+    margin: 1rem;
+    border-radius: 1rem;
+}
+.single-video-btn:hover{
+    background-color: var(--cta-color);
+    cursor: pointer;
+}
+.icon-video-btn{
+    font: rem;
+}
+.single-video-card-body{
+    margin: 1rem;
+}
+.single-video-info{
+    display: inline-flex;
+
 }

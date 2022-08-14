@@ -20,16 +20,19 @@ const Explore=()=>{
 
     return(
         <main className="main explore-main">
+
+            <div className="h-3 p-2">Explore Videos...</div>
             {videosError || categoryError ? (
-				<h3 className="text-center mx-auto px-3 error-color">
-					Videos could not be loaded. Try again after sometime.
-				</h3>
-			) 
+                <h3 className="text-center mx-auto px-3 error-color">
+                    Videos could not be loaded. Try again after sometime.
+                </h3>
+            ) 
             : (
             <VideoListing videos={videos} className="videos"/>
-
             )}
         </main>
+        // <div>Explore</div>
+
     )
 }
 export {Explore};

@@ -3,12 +3,17 @@ import { authReducerFunction, initialAuthState } from "../reducers";
 
 const AuthContext = createContext();
 
-const { Provider } = AuthContext;
+// const { Provider } = AuthContext;
 
 const AuthProvider = ({ children }) => {
 	const setInitialAuthState = () => {
 		const travelTapeToken = localStorage.getItem("travel-tape-token");
 		const travelTapeUser = localStorage.getItem("travel-tape-user");
+
+		
+		// console.log("in context: ", travelTapeUser);
+
+
 		if (travelTapeToken) {
 			return {
 				...initialAuthState,
@@ -17,6 +22,8 @@ const AuthProvider = ({ children }) => {
 				authUser: JSON.parse(travelTapeUser),
 			};
 		}
+		// console.log("initialAuth=",initialAuthState);
+
 		return initialAuthState;
 	};
 
@@ -25,7 +32,9 @@ const AuthProvider = ({ children }) => {
 		setInitialAuthState()
 	);
 	return (
-		<Provider value={{ ...authState, authDispatch }}>{children}</Provider>
+		<AuthContext.Provider value={{ ...authState, authDispatch }}>
+			{children}
+		</AuthContext.Provider>
 	);
 };
 

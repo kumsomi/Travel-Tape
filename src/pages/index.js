@@ -9,7 +9,9 @@ import { Playlist } from "./Playlists";
 import { SingleVideo } from "./SingleVideo";
 import { WatchLater } from "./WatchLater";
 import { PlaylistVideos } from "./PlaylistVideos";
-export{Login, Signup, Explore, History, Home, Likes, NotFound, Playlist, SingleVideo, WatchLater, PlaylistVideos};
+import { Profile } from "./Profile";
+
+export{Login, Signup, Explore, History, Home, Likes, NotFound, Playlist, SingleVideo, WatchLater, PlaylistVideos, Profile};
 
 
 

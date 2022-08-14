@@ -1,22 +1,20 @@
 import {Link, useNavigate} from "react-router-dom";
 import {FaUserAlt} from "react-icons/fa";
+import {BiLogIn} from "react-icons/bi";
 import "./style.css";
 import { useAuth } from "../../contexts";
 import { useToast } from "../../custom-hooks";
+
+
 const Navbar=()=>{
 
-    const { isAuth, authDispatch } = useAuth();
-	const navigate = useNavigate();
+    const { isAuth, authUser } = useAuth();
+	// const navigate = useNavigate();
     
-    const {showToast}=useToast();
+    // const {showToast}=useToast();
 
-    const handleLogoutUser = () => {
-		authDispatch({ action: { type: "RESET_AUTH" } });
-		showToast("Logged out successfully", "success");
-		localStorage.removeItem("stream-tunes-token");
-		localStorage.removeItem("stream-tunes-user");
-		navigate("/login");
-	};
+    
+
 
     return(
         <nav className="navigation-bar p-1 h-3">
@@ -28,19 +26,25 @@ const Navbar=()=>{
                     
                     
                     {isAuth ? (
-						<li>
-							<button
-								className="btn btn-primary btn-icon btn-logout text-sm"
-								onClick={handleLogoutUser}
-							>
-								{isAuth}
-							</button>
+
+						// <li>
+						// 	<button
+						// 		className="btn btn-primary btn-icon btn-logout text-sm"
+						// 		onClick={handleLogoutUser}
+						// 	>
+						// 		{isAuth} logout
+						// 	</button>
                             
-						</li>
+						// </li>
+                        <Link to="/profile" className="icon h-4 nav-user-icon no-link">
+                            <FaUserAlt  />
+                            <div>{authUser.firstName}</div>
+                        </Link>
 					) : (
-						<Link to="/login">
-                            <FaUserAlt className="icon h-4" />
-                            <div className="h-4">{isAuth}</div>
+						<Link to="/login" className="icon h-4 nav-user-icon no-link">
+                            <BiLogIn />
+                            <div>Login</div>
+
                         </Link>
 					)}
                 </ul> 
