@@ -1,5 +1,6 @@
 .navigation-bar{
-    background-color: var(--primary-color);   
+    background-color: var(--primary-color);  
+    border-bottom: 0; 
 }
 .nav-heading{
     color: var(--secondary-color);
