@@ -7,14 +7,14 @@ const { Provider } = AuthContext;
 
 const AuthProvider = ({ children }) => {
 	const setInitialAuthState = () => {
-		const streamTunesToken = localStorage.getItem("stream-tunes-token");
-		const streamTunesUser = localStorage.getItem("stream-tunes-user");
-		if (streamTunesToken) {
+		const travelTapeToken = localStorage.getItem("travel-tape-token");
+		const travelTapeUser = localStorage.getItem("travel-tape-user");
+		if (travelTapeToken) {
 			return {
 				...initialAuthState,
-				authToken: streamTunesToken,
+				authToken: travelTapeToken,
 				isAuth: true,
-				authUser: JSON.parse(streamTunesUser),
+				authUser: JSON.parse(travelTapeUser),
 			};
 		}
 		return initialAuthState;

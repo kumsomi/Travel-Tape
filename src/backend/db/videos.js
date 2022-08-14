@@ -26,7 +26,7 @@ export const videos = [
 
   },
   {
-    _id:"",
+    _id:"XncoZAkq_Qs",
     categoryName:"Solo Travel",
     views: 518759,
     dateAdded: "April 24, 2018",
@@ -37,7 +37,7 @@ export const videos = [
 
   },
   {
-    _id:"JJnPnni_jmE&t=761s",
+    _id:"JJnPnni_jmE",
     categoryName:"Adventure",
     views:414324,
     dateAdded:"February 15, 2021",
@@ -76,7 +76,4 @@ export const videos = [
     description:"Rs. 30,000 for a 6 day trip to the beautiful city of Paris.",
     logo:"https://yt3.ggpht.com/ytc/AKedOLSXDQT_t4cYk0Fp2RQqqYsw-fl-Vyq-nXtaAcKb=s176-c-k-c0x00ffffff-no-rj",
   },
-  
-
-
 ];

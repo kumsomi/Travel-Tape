@@ -1,3 +1,4 @@
 import { loginService } from "./loginService";
-
-export {loginService};
+import { signupService } from "./signupService";
+import { getVideos } from "./getVideos";
+export {loginService, signupService, getVideos};

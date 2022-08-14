@@ -1,0 +1,15 @@
+.video-options>*{
+    border: 1px solid var(--secondary-color);
+    padding: 0.5rem;
+    /* position: absolute; */
+    font-size: 1.5rem;
+    text-align: center;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    cursor: pointer;
+}
+.video-options{
+    position: relative;
+    /* position: absolute; */
+    top:1rem
+}
