@@ -4,11 +4,9 @@ import { signupService } from "../../../service";
 import { usePageTitle, useToast } from "../../../custom-hooks";
 import { useAuth } from "../../../contexts";
 
-
 const Signup=()=>{
 
-    usePageTitle('Travel Tape | Sign up');
-
+    usePageTitle('Travel Tape | Login');
 
     const initialFormData = {
         firstName:"",
@@ -71,13 +69,11 @@ const Signup=()=>{
 	// 	confirmPasswordError,
 	// } = formDataError;
 
-
     return(
     <div class="login">
         <h3>Signup page</h3>
         <div>
             <form className="form" 
-
             onSubmit={handleFormSubmit}
             >
 
@@ -103,14 +99,12 @@ const Signup=()=>{
                     name="email"
                     onChange={handleFormDataChange}
                     value={email}
-
                 />
                 </div>
                 <div class="form-div">
                 <label htmlFor="">Password
                 </label>
                 <input type="password" className="login-input primary-color"
-
                     name="password"
                     onChange={handleFormDataChange}
                     value={password}
@@ -118,9 +112,8 @@ const Signup=()=>{
                 </div>
                 {/* <div class="form-div">
                 <label>
-
                 <input type="checkbox" name="remember"/> Remember me
-                </label> */}
+                </label>
                 <div class="psw" >Forgot password?</div>
                 </div> */}
                 <button className="btn primary-btn login-btn">Signup</button>
