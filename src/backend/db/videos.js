@@ -36,6 +36,7 @@ export const videos = [
     logo:"https://yt3.ggpht.com/ytc/AKedOLRhGnCw_rLZ8kNI4kIyQQqY44wIYnHMKsum2ITsRCw=s176-c-k-c0x00ffffff-no-rj",
 
   },
+  
   {
     _id:"JJnPnni_jmE",
     categoryName:"Adventure",
@@ -96,6 +97,17 @@ export const videos = [
     description:"THE INCREDIBLE SOLO WORLD RIDE // SOLO MOTORCYCLE WORLD RIDE FROM INDIA// WORLD RIDE COVERING 5 CONTINENTS 37 COUNTRIES //ASIA, EUROPE, NORTH AMERICA, SOUTH AMERICA, AUSTRALIA- A dream journey started by a duo, halted by circumstances but continued to a mind boggling solo ride.",
     logo:"https://yt3.ggpht.com/ytc/AMLnZu-ukQacSdmX5vo80xvLPnqsSp1FiKpbzRijGRjh7Q=s176-c-k-c0x00ffffff-no-rj",
 
+  },
+  {
+    _id:"FJBdLsUeSw0",
+    categoryName:"Adventure",
+    views:93881,
+    dateAdded:"October 15, 2020",
+    title:"Top 12 Adventure Destinations In India For Those Who Like The Thrill | Curly Tales",
+    creator:"Curly Tales",
+    description:"Life becomes much happier and worth living when we treat our souls with adventurous trips, right? And there are innumerable thrilling sports that bring out that adrenaline rush in all of us, be it Hiking, Paragliding, Mountain Biking, River Rafting or SkyDiving. But do you really know all the places in India which offer the best of adventure activities? Don't worry, we're telling you about the top 12 adventure destinations in India that have some crazy activities in store for you!",
+    logo:"https://yt3.ggpht.com/zdU2A41m8coX5YUdqKM1Wb9fQYAwpX_u3qOErZlSEx-u0Rnw3-CnB_dSxtRJ3LCkGihs6fBe=s176-c-k-c0x00ffffff-no-rj",
+    
   },
   {
     _id:"iZgVwbdNKqY",
