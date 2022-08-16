@@ -1,0 +1,42 @@
+.shadow-color{
+}
+.playlist-card{
+    position: relative;
+    padding: 0;
+}
+.playlist-body{
+    background-color: rgba(108, 106, 106, 0.78);
+    /* background-color: var(--primary-color); */
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    right:0;
+    left:0;
+    border-radius: 0 0 0.5rem 0.5rem;
+}
+.playlist-icon{
+    cursor: pointer;
+    font-size:large;
+    border-radius: 0.5rem;
+    padding: 0.3rem;
+
+}
+.playlist-icon:hover{
+
+    color: var(--cta-color);
+    background-color: var(--primary-color);
+    /* background-color: var(--secondary-color); */
+}
+.playlist-sidebar{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: fit-content;
+    background-color: rgba(108, 106, 106, 0.78);
+    font-size: 2rem;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 0 0.5rem 0.5rem 0;
+}

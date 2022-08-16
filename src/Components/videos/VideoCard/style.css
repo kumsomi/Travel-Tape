@@ -78,3 +78,15 @@
     border-radius: 0.5rem;
 
 }
+
+.del-video-icon{
+    font-size: 3rem;
+    padding: 1rem;
+    border: 0;
+    box-shadow: 0 0 0;
+    /* color: transparent; */
+}
+.del-video-icon:hover{
+    color: var(--cta-color);
+    background-color: transparent;
+}

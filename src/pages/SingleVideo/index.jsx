@@ -152,25 +152,30 @@ const SingleVideo=()=>{
             {showPlaylistModal ? (<PlaylistModal video={videoToBeDisplayed} setShowPlaylistModal={setShowPlaylistModal}/>):(null)}
 
             <YouTube videoId={videoId}
-            className="yt-video"/>
+			opts={opts}
+            className=" flex-row justify-c-ctr br-2"/>
             <div className="single-video-card-body">
 
-            <h3 className="h-3">
-                {videoToBeDisplayed.title}
-            </h3>
+				<h3 className="h-3">
+					{videoToBeDisplayed.title}
+				</h3>
 
-            <div className="single-video-info h-4 fw-800"> 
-                <img src={videoToBeDisplayed.logo} alt={`${videoToBeDisplayed.creator}`} className="badge-circle s creator-logo"/>
-                <div className="creator-name">{videoToBeDisplayed.creator}</div>
+				<div className="single-video-info h-4 fw-800"> 
+					<img src={videoToBeDisplayed.logo} alt={`${videoToBeDisplayed.creator}`} className="badge-circle s creator-logo"/>
+					<div>
+					<div className="creator-name">{videoToBeDisplayed.creator}</div>
+					<div className="single-video-info spaces-btwn h-4">
+						<div>{getFormattedViews(videoToBeDisplayed.views)}</div>
+						<div 
+						className="views"
+						>{dateReleased}
+						</div>
+					</div>
+					</div>
+				</div>
+				
             </div>
-            <div className="single-video-info h-4">
-                    <div>{getFormattedViews(videoToBeDisplayed.views)}</div>
-                    <div 
-                    className="views"
-                    >{dateReleased}</div>
-            </div>
-            </div>
-            <div className="m-1">
+            <div className="m-1 flex flex-wrap">
                 <span className={isVideoInLikes? "single-video-btn single-video-active-btn":"single-video-btn "} onClick={handleLikedVideoChange}>
                 { isVideoInLikes ? (<>
                     < AiFillLike className="icon-video-btn "/>Liked</>
@@ -190,21 +195,21 @@ const SingleVideo=()=>{
                 </span>
             </div>
 
-            <div>
+            <div className="single-description">
                 {videoToBeDisplayed.description}
             </div>
         </div>
-		<div>
-		{videosError || categoryError ? (
-                <h3 className="text-center mx-auto px-3 error-color">
-                    Videos could not be loaded. Try again after sometime.
-                </h3>
-            ) 
-            : (
-            <VideoListing videos={videos} className="videos"/>
-            )}
-		</div>
 	</div>
+	// 	{videosError || categoryError ? (
+    //             <h3 className="text-center mx-auto px-3 error-color">
+    //                 Videos could not be loaded. Try again after sometime.
+    //             </h3>
+    //         ) 
+    //         : (
+    //         <VideoListing videos={videos} className="videos"/>
+    //         )}
+	// 	</div>
+	// </div>
     )
 }
 export {SingleVideo};

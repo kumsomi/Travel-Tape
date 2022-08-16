@@ -2,6 +2,7 @@
 .single-video-container{
     width: min-content;
     margin: auto;
+    padding: 1rem;
 }
 .single-video-btn{
     font-size: 1.4rem;
@@ -27,4 +28,20 @@
 .single-video-info{
     display: inline-flex;
 
+
 }
+.spaces-btwn{
+    display: flex;
+    justify-content: space-between;
+}
+.single-description{
+    font-size: 1.5rem;
+    padding: 0 1rem;
+}
+/* .br-2 {
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+} */
