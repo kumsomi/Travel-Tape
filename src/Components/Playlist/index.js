@@ -1,2 +1,3 @@
 import { PlaylistModal } from "./PlaylistModal";
-export {PlaylistModal};
+import { PlaylistListing } from "./PlaylistListing";
+export {PlaylistModal, PlaylistListing};

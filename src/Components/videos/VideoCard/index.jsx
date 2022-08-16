@@ -9,8 +9,10 @@ import { useOutsideClick, useToast } from "../../../custom-hooks";
 import { useAuth, useUserData } from "../../../contexts";
 import { deleteVideoFromHistoryService, deleteVideoFromPlaylistService } from "../../../service";
 import { PlaylistModal } from "../../Playlist";
+import {MdDelete} from "react-icons/md";
 
-const VideoCard=({video})=>{
+
+const VideoCard=({video, page})=>{
 
     const{
             _id:videoId,
@@ -41,8 +43,10 @@ const VideoCard=({video})=>{
     
     const isVideoInWatchLater = findVideoInList(watchlater, video);
 	const isVideoInLikes = findVideoInList(likes, video);
+	
 	const videoOptionsReference = useRef(null);
-    const [isOnGoingNetworkCall, setIsOnGoingNetworkCall] = useState(false);
+    
+	const [isOnGoingNetworkCall, setIsOnGoingNetworkCall] = useState(false);
 
     const optionsHandler=()=>{
         setIsOpenOptions((prev)=>!prev)
@@ -152,7 +156,8 @@ const VideoCard=({video})=>{
 
             {showPlaylistModal ? (
             <PlaylistModal 
-			// video={video} setShowPlaylistModal={setShowPlaylistModal} 
+				video={video}
+				setShowPlaylistModal={setShowPlaylistModal} 
 			/>
             ):null}
 			
@@ -177,7 +182,16 @@ const VideoCard=({video})=>{
                         </div>
 
                     </div>
+					{page === "playlist" ? (
+							<button
+								className="btn del-video-icon"
+								onClick={handleDeleteVideoFromPlaylist}
+							>
+								<MdDelete/>
+							</button>
+						) : null}
                     <div className="icon-btn option-link" onClick={optionsHandler}>
+						
                         <BsThreeDotsVertical/>
 						<div className="option-wrapper">
 							{isOpenOptions ?

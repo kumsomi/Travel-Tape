@@ -6,8 +6,11 @@ import { useOutsideClick, useToast } from "../../../custom-hooks";
 import { deleteVideoFromPlaylistService, postNewPlayList, postVideoToPlaylist } from "../../../service";
 
 import "./style.css";
+import { PlaylistOption } from "./PlaylistOption";
 
-const PlaylistModal=({video, setShowPlaylistModal })=>{
+const PlaylistModal=({
+	video, 
+	setShowPlaylistModal })=>{
 
     const { authToken } = useAuth();
 	const { userDataDispatch, playlists, userDataLoading } = useUserData();
@@ -21,40 +24,37 @@ const PlaylistModal=({video, setShowPlaylistModal })=>{
 	const playlistInputReference = useRef(null);
 	const isVideoEmpty = !video || !Object.keys(video).length;
 
-	// useEffect(() => {
-	// 	if (playlistInputReference.current) {
-	// 		playlistInputReference.current.focus();
-	// 	}
-	// }, [playlists?.length]);
+	
 
-    const playlist= playlists.map((playlist) => 
-        (
-            <div>
-                <label
-                    key={playlist._id}
-                >
-                    {isVideoEmpty ? null : (
-                        <input
-                            type="checkbox"
-                            name={`playlist-${playlist.title}`}
-                            id={playlist._id}
-                            checked={isVideoInPlaylist}
-                            onChange={handleChangePlaylist}
-                            disabled={userDataLoading || isOnGoingNetworkCall}
-                        />
-                    )}
-                    <span className="label-text">{playlist.title}</span>
-                </label>
-            </div>
-        ))
-	const isVideoInPlaylist =
-		!isVideoEmpty &&
-		playlist.videos.find(
-			(playlistVideo) => playlistVideo._id === video._id
-		) === undefined
-			? false
-			: true;
+	// const isVideoInPlaylist =
+	// 	!isVideoEmpty &&
+	// 	playlist.videos.find(
+	// 		(playlistVideo) => playlistVideo._id === video._id
+	// 	) === undefined
+	// 		? false
+	// 		: true;
 
+    // const playlist= playlists.map((playlist) => 
+    //     (
+    //         <div>
+    //             <label
+    //                 key={playlist._id}
+    //             >
+    //                 {isVideoEmpty ? null : (
+    //                     <input
+    //                         type="checkbox"
+    //                         name={`playlist-${playlist.title}`}
+    //                         id={playlist._id}
+    //                         checked={isVideoInPlaylist}
+    //                         onChange={handleChangePlaylist}
+    //                         disabled={userDataLoading || isOnGoingNetworkCall}
+    //                     />
+    //                 )}
+    //                 <span className="label-text">{playlist.title}</span>
+    //             </label>
+    //         </div>
+    //     ))
+	
 	const handlePlaylistNameChange = (e) => {
 		// setErrorMessage(null);
 		setPlaylistName(e.target.value);
@@ -94,38 +94,47 @@ const PlaylistModal=({video, setShowPlaylistModal })=>{
 
     
 
-    const handleChangePlaylist = async (e) => {
-		setIsOnGoingNetworkCall(true);
-		try {
-			const {
-				data: { playlist: updatedPlaylist },
-			} = isVideoInPlaylist
-				? await deleteVideoFromPlaylistService(
-						authToken,
-						playlist._id,
-						video._id
-				  )
-				: await postVideoToPlaylist(authToken, playlist._id, video);
-			userDataDispatch({
-				type: "UPDATE_PLAYLISTS",
-				payload: { playlist: updatedPlaylist },
-			});
-			showToast(
-				isVideoInPlaylist
-					? "Video removed from playlist."
-					: "Video added to playlist.",
-				"success"
-			);
-		} catch (error) {
-			showToast(
-				isVideoInPlaylist
-					? "Failed to remove video playlist."
-					: "Failed to add video to playlist.",
-				"error"
-			);
+    // const handleChangePlaylist = async (e) => {
+	// 	setIsOnGoingNetworkCall(true);
+	// 	try {
+	// 		const {
+	// 			data: { playlist: updatedPlaylist },
+	// 		} = isVideoInPlaylist
+	// 			? await deleteVideoFromPlaylistService(
+	// 					authToken,
+	// 					playlist._id,
+	// 					video._id
+	// 			  )
+	// 			: await postVideoToPlaylist(authToken, playlist._id, video);
+	// 		userDataDispatch({
+	// 			type: "UPDATE_PLAYLISTS",
+	// 			payload: { playlist: updatedPlaylist },
+	// 		});
+	// 		showToast(
+	// 			isVideoInPlaylist
+	// 				? "Video removed from playlist."
+	// 				: "Video added to playlist.",
+	// 			"success"
+	// 		);
+	// 	} catch (error) {
+	// 		showToast(
+	// 			isVideoInPlaylist
+	// 				? "Failed to remove video playlist."
+	// 				: "Failed to add video to playlist.",
+	// 			"error"
+	// 		);
+	// 	}
+	// // 	setIsOnGoingNetworkCall(false);
+	// };
+
+	const closePlaylist=()=>{
+		setShowPlaylistModal(false);
+	}
+	useEffect(() => {
+		if (playlistInputReference.current) {
+			playlistInputReference.current.focus();
 		}
-	// 	setIsOnGoingNetworkCall(false);
-	};
+	}, [playlists?.length]);
 	// useOutsideClick(playlistModalReference, () => setShowPlaylistModal(false));
     return(
 		<div className="playlist-modal-container">
@@ -138,28 +147,13 @@ const PlaylistModal=({video, setShowPlaylistModal })=>{
                     "Playlists" : 
 					"Add to an existing playlist"}
 				</h1>
-				
+						{/* {console.log(playlists)} */}
                      {playlists.map((playlist) => (
-                            <div>
-                                <label
-                                    key={playlist._id}
-                                    // className="playlist-option text-sm flex-row flex-align-start flex-justify-start"
-                                >
-                                    {isVideoEmpty ? null : (
-                                        <input
-                                            // className="text-sm mr-0-25"
-                                            type="checkbox"
-                                            name={`playlist-${playlist.title}`}
-                                            id={playlist._id}
-                                            checked={isVideoInPlaylist}
-                                            // onChange={handleChangePlaylist}
-                                            // disabled={userDataLoading || isOnGoingNetworkCall}
-                                        />
-                                    )}
-									<input type="checkbox" name="" id=""  className="mr-1"/>
-                                    <span className="label-text">{playlist.title}</span>
-                                </label>
-                            </div>
+                            <PlaylistOption
+								key={playlist._id}
+								video={video}
+								playlist={playlist}
+							/>
 						))
                     }
             </div>
@@ -184,8 +178,8 @@ const PlaylistModal=({video, setShowPlaylistModal })=>{
 					</button>
                 </div>
             </form>
+			<div className="close-playlist-btn" onClick={closePlaylist}><AiOutlineCloseCircle/></div>
 		</div>
-		<div className="close-btn"><AiOutlineCloseCircle/></div>
 	</div>
     )
 }
