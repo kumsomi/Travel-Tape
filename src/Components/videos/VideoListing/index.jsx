@@ -2,6 +2,7 @@ import { VideoCard } from "../VideoCard";
 import "./style.css";
 
 const VideoListing=({videos, page})=>{
+    console.log(videos);
     return(
         <div className="video-container">
             {videos.map((video)=>(
