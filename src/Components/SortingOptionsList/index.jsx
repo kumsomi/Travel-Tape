@@ -14,11 +14,14 @@ const SortingOptionsList = () => {
 			(prevShowSortingOptions) => !prevShowSortingOptions
 		);
 
-	const handleSortingOptionChange = (option) =>
+	const handleSortingOptionChange = (option) =>{
+        
 		videosDispatch({
 			type: "SET_SORTING_OPTION",
 			payload: { videosSortOption: option },
-		});
+		})
+        setShowSortingOptions(false);
+    };
     return(
         <div >
             <button className=" btn sort-btn"
@@ -38,10 +41,12 @@ const SortingOptionsList = () => {
             {showSortingOptions && 
                 <div className="sorting-options">
                     <div 
-                        className="sort-item"
+                        className={`${
+                            videosSortOption === "LATEST"?"sort-item selected-option":"sort-item"}`}
                         onClick={(e) => handleSortingOptionChange("LATEST")}>
                         Latest upload date</div>
-                    <div className="sort-item"
+                    <div className= {`${
+                            videosSortOption === "OLDEST"?"sort-item selected-option":"sort-item "}`}
                         onClick={(e) => handleSortingOptionChange("OLDEST")}
                     >
                         Oldest upload date</div>
