@@ -106,6 +106,7 @@ const VideoCard=({video, page})=>{
 			navigate("/login", { state: { from: "/explore" }, replace: true });
 		} else 
         setShowPlaylistModal(true);
+		setIsOpenOptions(false);
 	};
 
 	const handleDeleteVideoFromHistory = async (e) => {
