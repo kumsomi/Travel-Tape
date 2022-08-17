@@ -7,6 +7,8 @@ const initialVideos = {
 	videos: [],
 	videosError: null,
 	videosLoading: true,
+	videosSortOption: null,
+	videosSearchText: "",
 };
 const VideosContext = createContext(initialVideos);
 

@@ -24,6 +24,16 @@ const videosReducerFunction = (prevVideosState, { type, payload }) => {
 				videosLoading: payload.videosLoading,
 			};
 
+		case 'SET_SORTING_OPTION':
+			return {
+				...prevVideosState,
+				videosSortOption: payload.videosSortOption,
+			};
+		case 'SET_SEARCH_TEXT':
+			return {
+				...prevVideosState,
+				videosSearchText: payload.videosSearchText,
+			};
 		default:
 			throw new Error("Unknown action type.");
 	}

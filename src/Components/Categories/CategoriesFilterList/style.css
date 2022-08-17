@@ -1,0 +1,20 @@
+.category-list{
+    /* border-bottom: 1px solid var(--cta-color); */
+    padding: 1rem;
+}
+
+.category-btn{
+    margin: 0.5rem;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    border: 0;
+    background-color: gainsboro;
+}
+.category-btn:hover{
+    cursor: pointer;
+    background-color: var(--cta-color);
+}
+.selected-category{
+    background-color: var(--cta-color);
+    color: var(--secondary-color);
+}

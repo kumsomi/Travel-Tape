@@ -39,7 +39,7 @@ export const videos = [
   
   {
     _id:"JJnPnni_jmE",
-    categoryName:"Adventure",
+    categoryName:"Adventure Travel",
     views:414324,
     dateAdded:"February 15, 2021",
     title:"You Won't Believe this is India! Surfing for beginners in Mulki, Karnataka",
@@ -59,7 +59,7 @@ export const videos = [
   },
   {
     _id:"NJ_UupUgAzg",
-    categoryName:"Road trip",
+    categoryName:"Road Trip",
     views:759964,
     dateAdded:"October 27, 2020",
     title:"Mumbai To Goa Road Trip | Curly Tales",
@@ -100,7 +100,7 @@ export const videos = [
   },
   {
     _id:"FJBdLsUeSw0",
-    categoryName:"Adventure",
+    categoryName:"Adventure Travel",
     views:93881,
     dateAdded:"October 15, 2020",
     title:"Top 12 Adventure Destinations In India For Those Who Like The Thrill | Curly Tales",
@@ -123,7 +123,7 @@ export const videos = [
 
   {
     _id:"sBPz8wH5AGs",
-    categoryName:"Budget travel",
+    categoryName:"Budget Travel",
     views:105368,
     dateAdded:"July 8, 2018",
     title:"Paris For Rs. 30,000 - Hostel, Parties, Indian Food, Sim, Museums, Boats, Palaces- Indian Vlogger",

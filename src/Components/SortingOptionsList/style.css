@@ -1,0 +1,41 @@
+.sort-btn{
+    background-color: gainsboro;
+    font-size: 1.5rem;
+    width: fit-content;
+    margin: 1rem;
+    padding: 1rem;
+    border: 0;
+    
+}
+.sort-btn:hover{
+    background-color: var(--cta-color);
+    color: var(--secondary-color);
+}
+.sorting-options{
+    background-color: var(--primary-color);
+    background-color: rgb(17,17,17);
+    color: var(--secondary-color);
+    width: fit-content;
+    /* padding: 1rem; */
+    margin: 0 1rem;
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+}
+.sort-item{
+    padding: 1rem;
+    border-radius: 0.5rem;
+
+}
+.sort-item:hover{
+    cursor: pointer;
+    background-color: var(--cta-color);
+}
+.clear-btn{
+    padding: 0.7rem;
+    color: var(--cta-color);
+    cursor: pointer;
+    background-color: gainsboro;
+    border: 0;
+    border-radius: 0.5rem;
+    font-weight: 700;
+}
