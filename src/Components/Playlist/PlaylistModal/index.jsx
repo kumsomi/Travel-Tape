@@ -79,7 +79,7 @@ const PlaylistModal=({
 			setPlaylistName("");
 			if (isVideoEmpty) {
 				showToast("Created new playlist.", "success");
-			} else showToast("Added video to new playlist.", "success");
+			} else showToast("Playlist is created.", "success");
 		} catch (error) {
 			if (isVideoEmpty) {
 				showToast("Could not create playlist.", "error");

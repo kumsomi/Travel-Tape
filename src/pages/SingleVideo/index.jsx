@@ -152,11 +152,11 @@ const SingleVideo=()=>{
 		width:'100%',
 		height:'400px',
 	};
-    // useEffect(() => {
-	// 	if (videoToBeDisplayed) {
-	// 		postVideoToHistoryServiceCall();
-	// 	}
-	// }, [videoToBeDisplayed]);
+    useEffect(() => {
+		if (videoToBeDisplayed) {
+			postVideoToHistoryServiceCall();
+		}
+	}, [videoToBeDisplayed]);
 
     return(
 		<div className="flex flex-wrap">
