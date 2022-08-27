@@ -7,7 +7,8 @@ import { useEffect, useState } from "react";
 import { postVideoToHistoryService } from "../../service";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import {AiFillLike} from "react-icons/ai";
-
+import { FaShareAlt } from "react-icons/fa";
+import {FiShare2} from "react-icons/fi";
 import {AiOutlineLike } from "react-icons/ai";
 import {MdPlaylistAdd} from "react-icons/md";
 import {BsFillClockFill} from "react-icons/bs";
@@ -29,6 +30,7 @@ const SingleVideo=()=>{
 	const { showToast } = useToast();
     
     const videoToBeDisplayed = videos?.find((video) => video._id === videoId);
+	console.log(videoToBeDisplayed);
     const dateReleased = new Date(videoToBeDisplayed?.dateAdded)
 		.toDateString()
 		.substring(4)
@@ -135,16 +137,26 @@ const SingleVideo=()=>{
 		} else setShowPlaylistModal(true);
 	};
 
+	const [isCopyLink, setIsCopyLink]=useState(false);
+	const copyHandler = () => {
+		navigator.clipboard.writeText(window.location.href);
+		showToast("Link Copied","info");
+		setIsCopyLink(true);
+	};
+
 	const opts = {
 		playerVars: {
-			autoplay: 1,
+			'autoplay': 1,
+			'origin':'https://localhost:3000',
 		},
+		width:'100%',
+		height:'400px',
 	};
-    useEffect(() => {
-		if (videoToBeDisplayed) {
-			postVideoToHistoryServiceCall();
-		}
-	}, [videoToBeDisplayed]);
+    // useEffect(() => {
+	// 	if (videoToBeDisplayed) {
+	// 		postVideoToHistoryServiceCall();
+	// 	}
+	// }, [videoToBeDisplayed]);
 
     return(
 		<div className="flex flex-wrap">
@@ -164,7 +176,7 @@ const SingleVideo=()=>{
 					<img src={videoToBeDisplayed.logo} alt={`${videoToBeDisplayed.creator}`} className="badge-circle s creator-logo"/>
 					<div>
 					<div className="creator-name">{videoToBeDisplayed.creator}</div>
-					<div className="single-video-info spaces-btwn h-4">
+					<div className="single-video-info-pills spaces-btwn h-4">
 						<div>{getFormattedViews(videoToBeDisplayed.views)}</div>
 						<div 
 						className="views"
@@ -190,6 +202,12 @@ const SingleVideo=()=>{
                     (<><AiOutlineClockCircle className="icon-video-btn" />Add to WatchLater</>)
                 } 
                 </span>
+				<span className={isCopyLink ?"single-video-btn single-video-active-btn": "single-video-btn"} onClick={copyHandler}>
+                {isCopyLink ? 
+                    (<><FaShareAlt/> Link Copied</>):
+                    (<><FiShare2 className="icon-video-btn" />Copy Link</>)
+                } 
+                </span>
                 <span className="single-video-btn" onClick={handleShowPlaylistModal}>
                     <MdPlaylistAdd className="icon-video-btn"/> Save
                 </span>
@@ -199,17 +217,18 @@ const SingleVideo=()=>{
                 {videoToBeDisplayed.description}
             </div>
         </div>
+		{/* {console.log(videoToBeDisplayed)} */}
+		
+		{/* {videosError || categoryError ? (
+                <h3 className="text-center mx-auto px-3 error-color">
+                    Videos could not be loaded. Try again after sometime.
+                </h3>
+            ) 
+            : (
+            <VideoListing videos={videos} className="videos"/>
+            )} */}
+		{/* </div> */}
 	</div>
-	// 	{videosError || categoryError ? (
-    //             <h3 className="text-center mx-auto px-3 error-color">
-    //                 Videos could not be loaded. Try again after sometime.
-    //             </h3>
-    //         ) 
-    //         : (
-    //         <VideoListing videos={videos} className="videos"/>
-    //         )}
-	// 	</div>
-	// </div>
     )
 }
 export {SingleVideo};
