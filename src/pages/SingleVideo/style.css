@@ -1,8 +1,9 @@
 
 .single-video-container{
-    width: min-content;
+    /* width: min-content; */
     margin: auto;
     padding: 1rem;
+    max-width: 100%;
 }
 .single-video-btn{
     font-size: 1.4rem;
@@ -19,16 +20,22 @@
     background-color: var(--cta-color);
     color: var(--secondary-color);
 }
-.icon-video-btn{
+/* .icon-video-btn{
     font: rem;
-}
+} */
 .single-video-card-body{
     margin: 1rem;
 }
 .single-video-info{
     display: inline-flex;
-
-
+    width: 100%;
+    border: 1px solid rgb(196, 194, 194);
+    border-radius: 0.5rem;
+    align-items:center;
+    margin: 1rem auto;
+}
+.single-video-info>*{
+    padding: 0.5rem;
 }
 .spaces-btwn{
     display: flex;
