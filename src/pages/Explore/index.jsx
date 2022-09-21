@@ -42,7 +42,7 @@ const Explore=()=>{
                     <CategoryFiltersList />
                     <SortingOptionsList/>
                     {filteredSortedVideos?.length ? (
-						<h2 className="p-1">
+						<h2 className="p-1 text-center">
 							{filteredSortedVideos?.length > 1
 								? "Videos"
 								: "Video"}

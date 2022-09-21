@@ -23,16 +23,19 @@ const Playlist=()=>{
 	};
 
     return(
-        <div >
+        <div className="text-center">
             {showPlaylistModal ? (
             <PlaylistModal
 			//video={video} 
 			    setShowPlaylistModal={setShowPlaylistModal} 
 			/>
             ):null}
-            <button className="btn primary-btn" onClick={handleCreatePlaylistClicked}>
-                Create Playlist
-            </button>
+			<div className="page-btn">
+				<button className="btn primary-btn" onClick={handleCreatePlaylistClicked}>
+					Create Playlist
+				</button>
+			</div>
+            
             <h1>Total Playlists : {playlists.length}</h1>
             {playlists?.length ? (
 				// <div className="video-container">

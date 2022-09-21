@@ -11,7 +11,7 @@ function App() {
     <div className="app">
       <Navbar className="nav-mode"/>
       <div className="mode">
-      <NavRoutes/>
+        <NavRoutes/>
       <ToastContainer/>
 
       </div>

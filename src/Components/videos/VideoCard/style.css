@@ -1,4 +1,4 @@
-.video-card{
+/* .video-card{
 
     padding: 1rem;
     width: 25rem;
@@ -8,12 +8,24 @@
     flex-grow: 1;
     flex-shrink: 1;
     max-width: 40rem;
+} */
+.video-card {
+    width: 25rem;
+    font-weight: 500;
+    height: -moz-fit-content;
+    height: fit-content;
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
 }
-
+.video-card:hover{
+    /* border: 1px solid var(--primary-color); */
+    background-color: gainsboro;
+}
 .video-img{
     width: 100%;
     border-radius: 0.5rem;
-
+    height: 21rem;
 }
 .video-img:hover{
     transition: scale(1.3);

@@ -1,0 +1,20 @@
+.home-footer{
+    text-align: center;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+.home-footer-links{
+    justify-content: center;
+    font-size:medium;
+    /* padding: 1rem; */
+    /* color: var(--primary-color); */
+}
+.home-footer-links a{
+    margin: 1rem;
+    color: var(--secondary-color);
+    text-decoration: none;
+    /* padding: 1rem; */
+}
+.home-footer-links a:hover{
+    color: var(--cta-color);
+}

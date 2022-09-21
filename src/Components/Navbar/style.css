@@ -1,6 +1,8 @@
 .navigation-bar{
     background-color: var(--primary-color);  
     border-bottom: 0; 
+    display: flex;
+    align-items: center;
 }
 .nav-heading{
     color: var(--secondary-color);
@@ -11,4 +13,44 @@
 }
 .nav-user-icon{
     text-align: center;
+}
+.nav-search{
+    padding: 0.5rem;
+    max-width: 500px;
+    min-width: 200px;
+    /* width: fit-content; */
+    border: 0px solid;
+    background-color: transparent;
+    color: var(--secondary-color);
+}
+.navigation-brand-link input:focus{
+    border: 0px solid;
+    outline: 0px;
+}
+.nav-search:focus-visible{
+    outline: 0;
+}
+.search-container{
+    outline: 0.15rem solid #939090;;
+    display: flex;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+.search-container:focus-within{
+    outline: 0.2rem solid gainsboro;
+}
+.search-container-btn{
+    background: none;
+    color: var(--secondary-color);
+    border: 0px;
+}
+.search-container-btn:hover{
+    color: var(--cta-color);
+    cursor: pointer;
+}
+@media screen and (max-width: 400px){
+
+    .navigation-brand-link {
+        margin: 1rem;
+    }
 }

@@ -1,21 +1,18 @@
 
 import { getFormattedViews, findVideoInList, likeVideoServiceCall, watchLaterServiceCall } from "../../../utils";
-import "./style.css";
-import YouTube from 'react-youtube';
-import {GrClose} from "react-icons/gr";
+import "../VideoCard/style.css";
 import {BsThreeDotsVertical} from "react-icons/bs";
 import { useEffect, useRef, useState } from "react";
 // import { VideoOptions } from "../VideoOptions";
 import { NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
 import { useOutsideClick, useToast } from "../../../custom-hooks";
-import { useAuth, useUserData, useVideos } from "../../../contexts";
+import { useAuth, useUserData } from "../../../contexts";
 import { deleteVideoFromHistoryService, deleteVideoFromPlaylistService } from "../../../service";
 import { PlaylistModal } from "../../Playlist";
 import {MdDelete} from "react-icons/md";
-import { Loader } from "../../Loader";
 
 
-const VideoCard=({video, page})=>{
+const VideoSideCard=({video, page})=>{
 
     const{
             _id:videoId,
@@ -154,14 +151,7 @@ const VideoCard=({video, page})=>{
 			showToast("Failed to remove video playlist.", "error");
 		}
 	};
-	const opts = {
-		playerVars: {
-			'origin':'https://localhost:3000',
-		},
-		width:'100%',
-		height:'100%',
-	};
-	const {videosLoading, videosError}=useVideos();
+	
     return(
         <>
 
@@ -172,29 +162,15 @@ const VideoCard=({video, page})=>{
 			/>
             ):null}
 			
-            <div className="video-card">
+            <div className="video-side-card">
                 <NavLink to={`/explore/${videoId}`} className="no-link">
 
 
-                <div className="video-card-header">
+                <div className="video-side-card-header">
                     <img src={imgsrc} alt={`${videoTitle} cover`} className="video-img"/>
                 </div>
-				{/* <div>
-				{videosLoading ? (<Loader/>
-				):videosError?(
-					<h3>Failed to load the video</h3>
-				):(
-					<div className="video-card-header">
-						<YouTube videoId={videoId}
-							opts={opts}
-							className="video-img"
-							onClick={clickVideo}
-						/>
-					</div>
-				)}
-					</div> */}
-				</NavLink>
-					<div className="video-card-body">
+                </NavLink>
+                <div className="video-card-body">
 
                     <img src={video.logo} alt={`${video.creator}`} className="badge-circle s creator-logo"/>
                     <div className="video-info">
@@ -207,7 +183,6 @@ const VideoCard=({video, page})=>{
                         </div>
 
                     </div>
-					{/* </NavLink> */}
 					{page === "playlist" ? (
 							<button
 								className="btn del-video-icon"
@@ -218,7 +193,7 @@ const VideoCard=({video, page})=>{
 						) : null}
                     <div className="icon-btn option-link" onClick={optionsHandler}>
 						
-                        {isOpenOptions?<GrClose/>:<BsThreeDotsVertical/>}
+                        <BsThreeDotsVertical/>
 						<div className="option-wrapper">
 							{isOpenOptions ?
 								(
@@ -242,32 +217,6 @@ const VideoCard=({video, page})=>{
 						</div>
                     </div>
                 </div>
-                {/* </NavLink> */}
-                {/* <div className="icon-btn option-link" onClick={optionsHandler}>
-						
-                        {isOpenOptions?<GrClose/>:<BsThreeDotsVertical/>}
-						<div className="option-wrapper">
-							{isOpenOptions ?
-								(
-									<div className="video-options" ref={videoOptionsReference}>
-										<div className="option-item" onClick={handleWatchLaterChange}>
-											{isVideoInWatchLater ?
-												(<div>Remove from watch later</div>):
-												(<div >Add to watch later</div>)
-											}
-										</div>
-										<div className="option-item" onClick={handleLikedVideoChange}>
-											{ isVideoInLikes?(<div>Remove From Likes</div>):(<div>Add to Likes</div>)
-											}
-										</div>
-										<div className="option-item" onClick={handleShowPlaylistModal}>
-											Add to playlist
-										</div>
-									</div>
-								):null
-							}
-						</div>
-                    </div> */}
 				<div>
 				</div>
 
@@ -276,4 +225,4 @@ const VideoCard=({video, page})=>{
 
     );
 }
-export {VideoCard};
+export {VideoSideCard};
