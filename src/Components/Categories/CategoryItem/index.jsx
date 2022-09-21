@@ -36,11 +36,14 @@ const CategoryItem=({category})=>{
                     onMouseOut={handleMouseOut}
                 >
                     <img className="card-img" src={categoryImg} alt={`${category}`}/>
+                    {/* <video autoPlay muted loop className="img-responsive hero-img">
+                        <source src={backgroundVideo} type="video/mp4"/>
+                    </video> */}
                     {isHover && 
                         <div className="title-container">
                             <h2 className="h-2 card-title">{categoryName}</h2>
                         </div>
-                    }
+                     } 
                 </div>
             </Link>
     );

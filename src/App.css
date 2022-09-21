@@ -6,6 +6,9 @@
     "second"
     "third";
 }
+.cursor-pointer{
+    cursor: pointer;
+}
 .btn:hover{
     background-color: var(--cta-color);
     color: var(--secondary-color);
@@ -24,3 +27,64 @@
 .icon:hover{
     color: var(--cta-color);
 }
+/* .footer-text{
+    display: none;
+} */
+.page-btn{
+    display: flex;
+    justify-content: flex-end;
+}
+
+@media screen and (min-width: 768px){
+    .app{
+        display: grid;
+        grid-template-rows: 10vh 90vh;
+        grid-template-columns: 5vw 95vw;
+        grid-template-areas: 
+        "first first first first"
+        "third second second second";
+    }
+    .navigation-bar{
+        grid-area: first;
+        /* position: fixed; */
+        /* width: 100vw; */
+    }
+    /* .nav-brand-name-change{
+        display: block;
+    } */
+    .footer{
+        flex-direction: column;
+        grid-area: third;
+        /* position: absolute; */
+        /* top: 0;
+        bottom: 0; */
+        /* z-index: 10; */
+    }
+    /* .footer-text{
+        display: block;
+        margin-left: 1rem;
+    } */
+
+    /* Scroll bar */
+/* width */
+::-webkit-scrollbar {
+    width: 2px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+}
+

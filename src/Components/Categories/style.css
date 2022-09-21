@@ -18,9 +18,7 @@
 }
 .card-img:hover{
     opacity: 0.3;
-    /* transform: scale(1.1);
-    height: 100%;
-    width: 100%; */
+
 }
 
 .card-header{
@@ -32,7 +30,17 @@
     justify-content: center;
     position: relative;
 }
+/* .title-container{
+    visibility: hidden;
+    display: none;
+}
+.card-title{
+    visibility: hidden;
+    display: none;
+} */
 .title-container{
+    /* visibility: visible; */
+    display: block;
     position: absolute;
     display: flex;
     justify-content: center;
@@ -42,6 +50,8 @@
     border-radius: 1rem;
 }
 .card-title{
+    /* visibility: visible; */
+    display: block;
     align-self: center;
     justify-self: center ;
     /* position: absolute; */

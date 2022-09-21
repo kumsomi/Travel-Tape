@@ -41,13 +41,15 @@ const History=()=>{
 
     return(
         <div>
-            <h1>Videos in history: {history.length}</h1>
+            <h1 className="text-center">Videos in history: {history.length}</h1>
             {
                 history?.length ?( 
-                    <>
-                    <button onClick={handleClearHistory} className="btn primary-btn">Clear history</button>
+                    <div>
+						<div className="page-btn">
+							<button onClick={handleClearHistory} className="btn primary-btn ">Clear history</button>
+						</div>
                     <VideoListing videos={history}/>
-                    </>
+                    </div>
                 ):(
                     <div>
                         <div className="m-3">There are no videos in history list. Explore more.</div>

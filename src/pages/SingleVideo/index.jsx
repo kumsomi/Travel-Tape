@@ -14,7 +14,7 @@ import {MdPlaylistAdd} from "react-icons/md";
 import {BsFillClockFill} from "react-icons/bs";
 import "./style.css";
 import { PlaylistModal } from "../../Components/Playlist";
-import { VideoListing } from "../../Components";
+import { Loader, VideoListing, VideoSideListing } from "../../Components";
 
 const SingleVideo=()=>{
 
@@ -30,7 +30,6 @@ const SingleVideo=()=>{
 	const { showToast } = useToast();
     
     const videoToBeDisplayed = videos?.find((video) => video._id === videoId);
-	console.log(videoToBeDisplayed);
     const dateReleased = new Date(videoToBeDisplayed?.dateAdded)
 		.toDateString()
 		.substring(4)
@@ -152,6 +151,7 @@ const SingleVideo=()=>{
 		width:'100%',
 		height:'400px',
 	};
+
     useEffect(() => {
 		if (videoToBeDisplayed) {
 			postVideoToHistoryServiceCall();
@@ -159,76 +159,80 @@ const SingleVideo=()=>{
 	}, [videoToBeDisplayed]);
 
     return(
-		<div className="flex flex-wrap">
+		// <div>
         <div className="single-video-container">
             {showPlaylistModal ? (<PlaylistModal video={videoToBeDisplayed} setShowPlaylistModal={setShowPlaylistModal}/>):(null)}
-
-            <YouTube videoId={videoId}
-			opts={opts}
-            className=" flex-row justify-c-ctr br-2"/>
-            <div className="single-video-card-body">
-
-				<h3 className="h-3">
-					{videoToBeDisplayed.title}
-				</h3>
-
-				<div className="single-video-info h-4 fw-800"> 
-					<img src={videoToBeDisplayed.logo} alt={`${videoToBeDisplayed.creator}`} className="badge-circle s creator-logo"/>
+			<div>
+				{videosLoading ? (<Loader/>
+				):videosError|| !videoToBeDisplayed?(
+					<h3>Failed to load the video</h3>
+				):(
 					<div>
-					<div className="creator-name">{videoToBeDisplayed.creator}</div>
-					<div className="single-video-info-pills spaces-btwn h-4">
-						<div>{getFormattedViews(videoToBeDisplayed.views)}</div>
-						<div 
-						className="views"
-						>{dateReleased}
-						</div>
-					</div>
-					</div>
-				</div>
-				
-            </div>
-            <div className="m-1 flex flex-wrap">
-                <span className={isVideoInLikes? "single-video-btn single-video-active-btn":"single-video-btn "} onClick={handleLikedVideoChange}>
-                { isVideoInLikes ? (<>
-                    < AiFillLike className="icon-video-btn "/>Liked</>
-                    ):(<>
-                    <AiOutlineLike className="icon-video-btn" />Like</>
-                    )
-                }
-                </span>
-                <span className={isVideoInWatchLater ?"single-video-btn single-video-active-btn": "single-video-btn"} onClick={handleWatchLaterChange}>
-                {isVideoInWatchLater ? 
-                    (<><BsFillClockFill/> In-WatchLater</>):
-                    (<><AiOutlineClockCircle className="icon-video-btn" />Add to WatchLater</>)
-                } 
-                </span>
-				<span className={isCopyLink ?"single-video-btn single-video-active-btn": "single-video-btn"} onClick={copyHandler}>
-                {isCopyLink ? 
-                    (<><FaShareAlt/> Link Copied</>):
-                    (<><FiShare2 className="icon-video-btn" />Copy Link</>)
-                } 
-                </span>
-                <span className="single-video-btn" onClick={handleShowPlaylistModal}>
-                    <MdPlaylistAdd className="icon-video-btn"/> Save
-                </span>
-            </div>
+						<YouTube videoId={videoId}
+							opts={opts}
+							className=" flex-row justify-c-ctr br-2"
+						/>
+						{/* </div> */}
+							
+							
+							<div className="single-video-card-body">
 
-            <div className="single-description">
-                {videoToBeDisplayed.description}
-            </div>
+								<h3 className="h-3">
+									{videoToBeDisplayed.title}
+								</h3>
+
+{/* hi */}
+							<div className="m-1 flex flex-wrap">
+								<span className={isVideoInLikes? "single-video-btn single-video-active-btn":"single-video-btn "} onClick={handleLikedVideoChange}>
+								{ isVideoInLikes ? (<>
+									< AiFillLike className="icon-video-btn "/>Liked</>
+									):(<>
+									<AiOutlineLike className="icon-video-btn" />Like</>
+									)
+								}
+								</span>
+								<span className={isVideoInWatchLater ?"single-video-btn single-video-active-btn": "single-video-btn"} onClick={handleWatchLaterChange}>
+								{isVideoInWatchLater ? 
+									(<><BsFillClockFill/> In-WatchLater</>):
+									(<><AiOutlineClockCircle className="icon-video-btn" />Add to WatchLater</>)
+								} 
+								</span>
+								<span className={isCopyLink ?"single-video-btn single-video-active-btn": "single-video-btn"} onClick={copyHandler}>
+								{isCopyLink ? 
+									(<><FaShareAlt/> Link Copied</>):
+									(<><FiShare2 className="icon-video-btn" />Copy Link</>)
+								} 
+								</span>
+								<span className="single-video-btn" onClick={handleShowPlaylistModal}>
+									<MdPlaylistAdd className="icon-video-btn"/> Save
+								</span>
+							</div>
+{/* hi */}
+								<div className="single-video-info h-4 fw-800"> 
+									<img src={videoToBeDisplayed.logo} alt={`${videoToBeDisplayed.creator}`} className="badge-circle s creator-logo"/>
+									<div>
+									<div className="creator-name">{videoToBeDisplayed.creator}</div>
+									<div className="single-video-info-pills spaces-btwn h-4">
+										<div>{getFormattedViews(videoToBeDisplayed.views)}</div>
+										<div 
+										className="views"
+										>{dateReleased}
+										</div>
+									</div>
+									</div>
+								</div>
+								
+							</div>
+								{/* <button>Get time</button> */}
+							<div className="single-description">
+								{videoToBeDisplayed.description}
+							</div>
+					</div>
+				)
+				}
+			</div>
+            
         </div>
-		{/* {console.log(videoToBeDisplayed)} */}
-		
-		{/* {videosError || categoryError ? (
-                <h3 className="text-center mx-auto px-3 error-color">
-                    Videos could not be loaded. Try again after sometime.
-                </h3>
-            ) 
-            : (
-            <VideoListing videos={videos} className="videos"/>
-            )} */}
-		{/* </div> */}
-	</div>
     )
 }
 export {SingleVideo};

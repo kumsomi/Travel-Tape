@@ -4,7 +4,7 @@
 .img-responsive{
     border-radius: 0px ;
     width: 100%;
-    opacity: 0.8;
+    opacity: 0.6;
     height: auto;
 
 }
@@ -28,6 +28,7 @@ img.hero-img {
     height: 60vh;
     width: 100%;
     object-position: center 30%;
+    /* opacity: 0.8; */
 }
 
 .hero-head {

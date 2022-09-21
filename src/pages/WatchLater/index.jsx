@@ -13,7 +13,7 @@ const WatchLater=()=>{
 	} = useUserData();
 
     return(
-        <div>
+        <div className="text-center">
             <h1>Videos in Watch Later: {watchlater.length}</h1>
             {watchlaterError || watchlaterError ? (
 				<h3 className="text-center mx-auto px-3 error-color my-3">

@@ -1,8 +1,19 @@
-.video-container{
+/* .video-container{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-}
+} */
 .down-slide-icon{
     font-size: 4rem;
+}
+.video-container {
+    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(30rem,1fr));
+    grid-gap: 3rem;
+    margin: 2rem;
+}
+.load-more-videos{
+    color: var(--primary-color);
+    font-size: 2rem;
 }

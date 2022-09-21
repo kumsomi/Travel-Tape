@@ -12,8 +12,8 @@ const Likes=()=>{
 	} = useUserData();
 
     return(
-        <div>
-            <h1>Liked Video: {likes.length}</h1>
+        <div className="text-center">
+            <h1 >Liked Video: {likes.length}</h1>
             {
                 likes?.length ?( 
                     <VideoListing videos={likes} page="likes"/>

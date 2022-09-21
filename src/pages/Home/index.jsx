@@ -1,4 +1,4 @@
-import { CategoryList, Header} from "../../Components";
+import { CategoryList, Header, HomeFooter} from "../../Components";
 import { usePageTitle, useToast} from "../../custom-hooks";
 
 
@@ -9,6 +9,7 @@ const Home=()=>{
         <div>
             <Header/>
             <CategoryList/>
+            <HomeFooter/>
         </div>
     )
 }
