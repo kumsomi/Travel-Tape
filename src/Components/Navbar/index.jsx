@@ -1,7 +1,11 @@
-import {Link, useNavigate, useLocation} from "react-router-dom";
+import {Link, NavLink, useNavigate, useLocation} from "react-router-dom";
 import {FaUserAlt} from "react-icons/fa";
 import {BiLogIn} from "react-icons/bi";
 import {FaSearch} from "react-icons/fa";
+import {VscChromeClose} from "react-icons/vsc";
+import {IoCloseSharp} from "react-icons/io5";
+import {MdClose} from "react-icons/md";
+import {GrClose} from "react-icons/gr";
 import "./style.css";
 import { useAuth, useVideos } from "../../contexts";
 // import { useToast } from "../../custom-hooks";
@@ -14,13 +18,14 @@ const Navbar=()=>{
 	// const navigate = useNavigate();
     
     // const {showToast}=useToast();
-    const { videosSearchText } = useVideos();
+    const { videos, videosSearchText } = useVideos();
     const [searchText, setSearchText] = useState(videosSearchText);
     // const {showFooterText, setShowFooterText}=useState(false);
     const { videosDispatch } = useVideos();
 	const navigateToExplore = (event) => {
 		event.preventDefault();
 	};
+    const[autoText, setAutoText]=useState([]);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -45,18 +50,20 @@ const Navbar=()=>{
 		debounce(fetchSearchedVideos, 800),
 		[]
 	);
-
+    const clearSearchText=(event)=>{
+        setSearchText("");
+        debouncedFetchSearchVideos(event.target.value);
+    }
 	const handleSearchTextChange = (event) => {
-		setSearchText(event.target.value);
+        
+		setSearchText(event.target.value.trim(" "));
+        // setAutoText(...autoText,videos.filter((vid)=>vid.title.includes(event.target.value)));
 		if (location.pathName !== "/explore") {
 			navigate("/explore");
 		}
 		debouncedFetchSearchVideos(event.target.value);
 	};
 
-    // const handleChangeFooterText=()=>{
-    //     setShowFooterText(prev=>!prev);
-    // }
 
     return(
         <nav className="navigation-bar p-1 h-3">
@@ -65,7 +72,7 @@ const Navbar=()=>{
                 <span className="nav-heading flex flex-wrap ">Travel Tape</span>
             </Link>
 
-            <form className="navigation-brand-link" onSubmit={navigateToExplore}>
+            <form className="navigation-brand-link search-form" onSubmit={navigateToExplore}>
                 <div className="search-container">
                 <input 
                     type="text" 
@@ -74,9 +81,29 @@ const Navbar=()=>{
                     placeholder="Search videos by title"
                     className="nav-search"
                 />
-                <button type="submit" className="search-container-btn"><FaSearch/></button>   
+                {searchText?
+                    <button className="search-container-btn" onClick={clearSearchText}>
+                        <IoCloseSharp/>
+                    </button>:
+                    <button type="submit" className="search-container-btn">
+                        <FaSearch/>
+                    </button> 
+                }  
                 </div>
+                {/* {searchText &&
+                <div className="auto-complete-titles">
+                    <table>
+                        {autoText.map((video)=>
+                        <tbody className="elipsis-text" key={video._id}>
+                            <NavLink to={`/explore/${video._id}`} className="no-link"key={video._id}>
+                                {video.title}
+                            </NavLink>
+                        </tbody>)}
+                    </table>    
+                </div>
+                } */}
             </form>
+            
             <div className="navigation-brand-link">
                 <ul className="no-bullet spaced-list">
                     

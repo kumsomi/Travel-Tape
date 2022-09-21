@@ -48,6 +48,22 @@
     color: var(--cta-color);
     cursor: pointer;
 }
+.auto-complete-titles{
+    position: absolute;
+    top:10vh;
+    background-color: gainsboro;
+    color: var(--primary-color);
+    min-width: 200px;
+    max-width: 500px;
+    overflow-y: scroll;
+
+}
+.elipsis-text{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 16px;
+}
 @media screen and (max-width: 400px){
 
     .navigation-brand-link {
