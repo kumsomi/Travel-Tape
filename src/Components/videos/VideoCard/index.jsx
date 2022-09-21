@@ -26,8 +26,8 @@ const VideoCard=({video, page})=>{
             views,
             dateAdded,
     } = video;
-    const imgsrc=`https://i.ytimg.com/vi/${video._id}/mqdefault.jpg`
-
+    const imgsrc=`https://i.ytimg.com/vi/${video._id}/hqdefault.jpg`;
+	// mq--> maxresdefault.jpg
 	const dateReleased = new Date(dateAdded)
 		.toDateString()
 		.substring(4)
@@ -174,7 +174,6 @@ const VideoCard=({video, page})=>{
 			
             <div className="video-card">
                 <NavLink to={`/explore/${videoId}`} className="no-link">
-
 
                 <div className="video-card-header">
                     <img src={imgsrc} alt={`${videoTitle} cover`} className="video-img"/>

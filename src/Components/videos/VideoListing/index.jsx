@@ -4,9 +4,8 @@ import { VideoCard } from "../VideoCard";
 import "./style.css";
 
 const VideoListing=({videos, page})=>{
-    // console.log(videos);
     const { pageNumber, loading, lastElementReference, hasMoreVideos } = useInfiniteScroll(videos);
-    const videosToDisply = videos?.slice(0, pageNumber * 4);
+    const videosToDisply = videos?.slice(0, pageNumber * 5);
 
     const showLoader = () =>
         videosToDisply?.length &&
