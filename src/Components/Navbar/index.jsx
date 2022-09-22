@@ -2,19 +2,19 @@ import {Link, NavLink, useNavigate, useLocation} from "react-router-dom";
 import {FaUserAlt} from "react-icons/fa";
 import {BiLogIn} from "react-icons/bi";
 import {FaSearch} from "react-icons/fa";
-import {VscChromeClose} from "react-icons/vsc";
+import { MdLightMode, MdDarkMode } from "react-icons/md";
 import {IoCloseSharp} from "react-icons/io5";
-import {MdClose} from "react-icons/md";
-import {GrClose} from "react-icons/gr";
 import "./style.css";
-import { useAuth, useVideos } from "../../contexts";
+import { useTheme, useAuth, useVideos } from "../../contexts";
 // import { useToast } from "../../custom-hooks";
 import { useCallback, useState } from "react";
+import { useEffect } from "react";
 
 
 const Navbar=()=>{
 
     const { isAuth, authUser } = useAuth();
+    const {theme, setTheme}=useTheme();
 	// const navigate = useNavigate();
     
     // const {showToast}=useToast();
@@ -64,22 +64,29 @@ const Navbar=()=>{
 		debouncedFetchSearchVideos(event.target.value);
 	};
 
+    const changeThemeHandler=()=>{
+        setTheme((prevTheme)=>(prevTheme==="dark"?"light":"dark"));
+    }
+
+    useEffect(() => {
+		localStorage.setItem("travel-tape-theme", theme);
+	}, [theme]);
 
     return(
-        <nav className="navigation-bar p-1 h-3">
+        <nav className={`navigation-bar p-1 h-3` }>
             
             <Link to="/" className="h-3 no-link nav-brand-name-change">
-                <span className="nav-heading flex flex-wrap ">Travel Tape</span>
+                <span className={theme==="light"?`light-theme-nav-heading flex flex-wrap`:`nav-heading flex flex-wrap `} >Travel Tape</span>
             </Link>
 
             <form className="navigation-brand-link search-form" onSubmit={navigateToExplore}>
-                <div className="search-container">
+                <div className={theme==="light"?`search-container-light-theme`:`search-container`}>
                 <input 
                     type="text" 
                     onChange={handleSearchTextChange}
                     value={searchText}
                     placeholder="Search videos by title"
-                    className="nav-search"
+                    className={theme==="light"?`nav-search nav-search-light-theme`:`nav-search`}
                 />
                 {searchText?
                     <button className="search-container-btn" onClick={clearSearchText}>
@@ -106,20 +113,24 @@ const Navbar=()=>{
             
             <div className="navigation-brand-link">
                 <ul className="no-bullet spaced-list">
+                    <div className=" theme-icon-container" onClick={changeThemeHandler}>
+                        {theme==="light" ? <MdLightMode className="theme-icon"/>:<MdDarkMode className="theme-icon"/>}
+                    </div>
                     
-                    
+                    <div className="nav-login-btn">
                     {isAuth ? (
-                        <Link to="/profile" className="icon h-4 nav-user-icon no-link">
-                            <FaUserAlt  />
+                        <Link to="/profile" className={theme==="light"?`icon icon-light h-4 nav-user-icon no-link`:`icon icon-dark h-4 nav-user-icon no-link`}>
+                            <FaUserAlt />
                             <div>{authUser.firstName}</div>
                         </Link>
 					) : (
-						<Link to="/login" className="icon h-4 nav-user-icon no-link">
+						<Link to="/login" className={`icon icon-${theme} h-4 nav-user-icon no-link mobile-screen-nav-login`}>
                             <BiLogIn />
                             <div>Login</div>
 
                         </Link>
 					)}
+                    </div>
                 </ul> 
             </div>
         </nav>

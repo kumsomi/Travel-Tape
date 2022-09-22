@@ -164,7 +164,7 @@ const Login = () => {
                 className="btn secondary-btn login-btn"
             />
 
-            <Link to="/signup">
+            <Link className="new-account" to="/signup">
             <span >Create new account</span>
             </Link>
         </form>

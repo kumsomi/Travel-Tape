@@ -40,7 +40,7 @@ const History=()=>{
 	};
 
     return(
-        <div>
+        <div className="text-center">
             <h1 className="text-center">Videos in history: {history.length}</h1>
             {
                 history?.length ?( 
@@ -52,7 +52,7 @@ const History=()=>{
                     </div>
                 ):(
                     <div>
-                        <div className="m-3">There are no videos in history list. Explore more.</div>
+                        <div className="m-3 h-4">There are no videos in history list. Explore more.</div>
                             <Link to="/explore" className="btn">
                                 Explore now
                             </Link> 

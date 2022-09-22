@@ -1,5 +1,5 @@
 .sort-btn{
-    background-color: gainsboro;
+    /* background-color: var(--secondary-color); */
     font-size: 1.5rem;
     width: fit-content;
     margin: 1rem;

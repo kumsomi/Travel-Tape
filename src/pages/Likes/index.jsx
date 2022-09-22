@@ -19,7 +19,7 @@ const Likes=()=>{
                     <VideoListing videos={likes} page="likes"/>
                 ):(
                     <div>
-                        <div className="m-3">There are no liked videos. Explore more.</div>
+                        <div className="m-3 h-4">There are no liked videos. Explore more.</div>
                             <Link to="/explore" className="btn">
                                 Explore now
                             </Link> 

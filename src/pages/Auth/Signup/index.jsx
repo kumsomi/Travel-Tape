@@ -117,7 +117,7 @@ const Signup=()=>{
                 <div class="psw" >Forgot password?</div>
                 </div> */}
                 <button className="btn primary-btn login-btn">Signup</button>
-                <Link to="/login">
+                <Link className="new-account" to="/login">
                 <span >Already have an account</span>
                 </Link>
             </form>

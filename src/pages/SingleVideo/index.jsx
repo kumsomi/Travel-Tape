@@ -181,9 +181,9 @@ const SingleVideo=()=>{
 									{videoToBeDisplayed.title}
 								</h3>
 
-{/* hi */}
+
 							<div className="m-1 flex flex-wrap">
-								<span className={isVideoInLikes? "single-video-btn single-video-active-btn":"single-video-btn "} onClick={handleLikedVideoChange}>
+								<span className={isAuth && isVideoInLikes? "single-video-btn single-video-active-btn":"single-video-btn "} onClick={handleLikedVideoChange}>
 								{ isVideoInLikes ? (<>
 									< AiFillLike className="icon-video-btn "/>Liked</>
 									):(<>
@@ -191,7 +191,7 @@ const SingleVideo=()=>{
 									)
 								}
 								</span>
-								<span className={isVideoInWatchLater ?"single-video-btn single-video-active-btn": "single-video-btn"} onClick={handleWatchLaterChange}>
+								<span className={isAuth && isVideoInWatchLater ?"single-video-btn single-video-active-btn": "single-video-btn"} onClick={handleWatchLaterChange}>
 								{isVideoInWatchLater ? 
 									(<><BsFillClockFill/> In-WatchLater</>):
 									(<><AiOutlineClockCircle className="icon-video-btn" />Add to WatchLater</>)
