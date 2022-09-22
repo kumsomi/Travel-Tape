@@ -18,10 +18,28 @@ code {
 :root{
   --cta-color:#564882;
   --primary-color:black;
-  --screen-color:#E1BBC9;
+  --secondary-color:#a9a5a5;
+  --screen-color:#3a3939f0;
+  --primary-color-light:#dcdcdc;
+  --screen-color-light:white;
   /* --cta-color: #E1BBC9; */
-  --secondary-color: white;
+  --secondary-color-light: black;
   /* --cta-color:transparent; */
   font-family: 'Edu VIC WA NT Beginner', cursive;
   font-family: 'Source Sans Pro', sans-serif;
+}
+.light{
+  color: var(--secondary-color-light);
+
+  /* background-color: var(--screen-color-light); */
+  background: rgb(220,220,220);
+  background: linear-gradient(175deg, rgba(220,220,220,1) 0%, rgba(95,80,144,1) 79%);  
+}
+
+.dark{
+  color: var(--secondary-color);
+  background: rgb(2,0,36);
+  background: linear-gradient(175deg, rgba(2,0,36,1) 0%, rgba(95,80,144,1) 91%);
+  background: rgb(2,0,36);
+background: linear-gradient(175deg, rgba(2,0,36,1) 0%, rgba(86,67,152,1) 100%);
 }

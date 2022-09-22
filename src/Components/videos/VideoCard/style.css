@@ -19,8 +19,7 @@
     border-radius: 1rem;
 }
 .video-card:hover{
-    /* border: 1px solid var(--primary-color); */
-    background-color: gainsboro;
+    transform: scale(0.98);
 }
 .video-img{
     width: 100%;

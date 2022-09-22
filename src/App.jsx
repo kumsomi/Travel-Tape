@@ -5,10 +5,12 @@ import { NavRoutes } from "./routes/NavRoutes";
 
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { useTheme } from "./contexts";
 
 function App() {
+  const{theme}=useTheme();
   return (
-    <div className="app">
+    <div className={`app ${theme}`}>
       <Navbar className="nav-mode"/>
       <div className="mode">
         <NavRoutes/>

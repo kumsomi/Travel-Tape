@@ -8,7 +8,7 @@
     border-radius: 1rem;
     padding: 0.5rem;
     border: 0;
-    background-color: gainsboro;
+    background-color: var(--secondary-color);
 }
 .category-btn:hover{
     cursor: pointer;

@@ -6,16 +6,17 @@ import {IoMdHome} from "react-icons/io";
 import {MdOutlineExplore} from "react-icons/md";
 import {AiOutlineClockCircle} from "react-icons/ai";
 import { NavLink } from "react-router-dom";
-import { Link } from "react-router-dom";
-import {FaBars} from "react-icons/fa";
-import {GrClose} from "react-icons/gr";
+import { FaUserAlt } from "react-icons/fa";
+import { BiLogIn } from "react-icons/bi";
 import { useState } from "react";
+import { useAuth } from "../../contexts";
 const Footer=()=>{
     const getActiveStyle = ({ isActive }) => ({
         // padding: isActive ? "0.3rem" : "",
         // border: isActive ? "1px solid white":"",
         color:isActive? "#564882":"",
     });
+    const {isAuth} =useAuth();
     const {showFooterText, setShowFooterText}=useState(false);
     
     const handleChangeFooterText=()=>{
@@ -44,23 +45,34 @@ const Footer=()=>{
             {isHover && <span className=" h-3 footer-text">Explore</span>}
         </NavLink>
         {/* <div className="user-features"> */}
-        <NavLink to="/playlists" style={getActiveStyle} className="icon no-link footer-text-container" >
+        {/* <span className=" mobile-nil-btn"> */}
+        <NavLink to="/playlists" style={getActiveStyle} className="icon no-link footer-text-container mobile-nil-btn" >
             <MdOutlineVideoLibrary  className="h-3"/>
             {isHover &&<span className=" h-3 footer-text">Playlist</span>}
         </NavLink>
-        <NavLink to="/likes" style={getActiveStyle} className="icon no-link footer-text-container">
+        <NavLink to="/likes" style={getActiveStyle} className="icon no-link footer-text-container mobile-nil-btn">
             <AiFillLike  className="h-3"/>
             {isHover &&<span className=" h-3 footer-text">Likes</span>}
         </NavLink>
-        <NavLink to="/watchlater" style={getActiveStyle} className="icon no-link footer-text-container">
+        <NavLink to="/watchlater" style={getActiveStyle} className="icon no-link footer-text-container mobile-nil-btn">
             <AiOutlineClockCircle  className="h-3"/>
             {isHover &&<span className=" h-3 footer-text">Watch Later</span>}
         </NavLink>
-        <NavLink to="/history" style={getActiveStyle} className="icon no-link footer-text-container">
+        <NavLink to="/history" style={getActiveStyle} className="icon no-link footer-text-container mobile-nil-btn">
             <FaHistory className="h-3"/>
             {isHover && <span className=" h-3 footer-text">History</span>}
         </NavLink>
-        {/* </div> */}
+        
+        {isAuth ? (
+                        <NavLink to="/profile" style={getActiveStyle} className="icon no-link footer-text-container mobile-only-btn">
+                            <FaUserAlt className="h-3" />
+                        </NavLink>
+					) : (
+						<NavLink to="/login" style={getActiveStyle} className="icon no-link footer-text-container mobile-only-btn">
+                            <BiLogIn  className="h-3"/>
+                        </NavLink>
+					)}
+        
     </div>
     );
 }

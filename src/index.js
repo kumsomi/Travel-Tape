@@ -5,7 +5,7 @@ import App from "./App";
 import { BrowserRouter} from "react-router-dom";
 import { makeServer } from "./server";
 
-import { AuthProvider, CategoryProvider, UserDataProvider, VideosProvider } from "./contexts";
+import { AuthProvider, CategoryProvider, ThemeProvider, UserDataProvider, VideosProvider } from "./contexts";
 
 // , VideosProvider
 // import { VideosProvider } from "./contexts";
@@ -18,14 +18,14 @@ root.render(
     <BrowserRouter>
       <AuthProvider>
         <UserDataProvider>
-      <CategoryProvider>
-        <VideosProvider>
-
-          <App/>
-
-        </VideosProvider>
-      </CategoryProvider>
-      </UserDataProvider>
+          <ThemeProvider>
+            <CategoryProvider>
+              <VideosProvider>
+                <App/>
+              </VideosProvider>
+            </CategoryProvider>
+            </ThemeProvider>
+        </UserDataProvider>
       </AuthProvider>   
     </BrowserRouter>
   </React.StrictMode>,

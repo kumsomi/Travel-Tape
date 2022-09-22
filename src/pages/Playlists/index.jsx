@@ -44,7 +44,7 @@ const Playlist=()=>{
             
 			) : (
 				<div >
-					<div className="m-3">
+					<div className="m-3 h-4">
                         There are no playlists. Explore videos to create and add videos to playlists!
                     </div>
 					<Link
