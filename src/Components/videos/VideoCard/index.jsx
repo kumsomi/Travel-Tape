@@ -197,6 +197,7 @@ const VideoCard=({video, page})=>{
             ):null}
 			
             <div className="video-card">
+				<div>
                 <NavLink to={`/explore/${videoId}`} className="no-link video-card-header" onMouseOver={handleMouseOver}
                     onMouseOut={handleMouseOut}>
 
@@ -227,6 +228,7 @@ const VideoCard=({video, page})=>{
 				)}
 					</div> */}
 				</NavLink>
+				</div>
 					<div className="video-card-body">
 
                     <img src={video.logo} alt={`${video.creator}`} className="badge-circle s creator-logo"/>
@@ -249,19 +251,51 @@ const VideoCard=({video, page})=>{
 								<MdDelete/>
 							</button>
 						) : null}
+						
                     <div className="icon-btn option-link" onClick={optionsHandler}>
 						
                         {isOpenOptions?<GrClose/>:<BsThreeDotsVertical/>}
-						<div className="option-wrapper">
+					</div> 
+					{/* extra daala h */}
+						{/* <div className="option-wrapper">
 							{isOpenOptions ?
 								(
 									<div className="video-options" ref={videoOptionsReference}>
+										{page === "playlist" ? (
 										<div className="option-item" onClick={handleWatchLaterChange}>
 											{isVideoInWatchLater ?
 												(<div>Remove from watch later</div>):
 												(<div >Add to watch later</div>)
 											}
 										</div>
+										):null}
+										<div className="option-item" onClick={handleLikedVideoChange}>
+											{ isVideoInLikes?(<div>Remove From Likes</div>):(<div>Add to Likes</div>)
+											}
+										</div>
+										<div className="option-item" onClick={handleShowPlaylistModal}>
+											Add to playlist
+										</div>
+									</div>
+								):null
+							}
+						</div> */}
+                    {/* </div> */}
+                </div>
+
+{/* option daala h */}
+<div className="option-wrapper">
+							{isOpenOptions ?
+								(
+									<div className="video-options" ref={videoOptionsReference}>
+										
+										<div className="option-item" onClick={handleWatchLaterChange}>
+											{isVideoInWatchLater ?
+												(<div>Remove from watch later</div>):
+												(<div >Add to watch later</div>)
+											}
+										</div>
+										
 										<div className="option-item" onClick={handleLikedVideoChange}>
 											{ isVideoInLikes?(<div>Remove From Likes</div>):(<div>Add to Likes</div>)
 											}
@@ -273,8 +307,8 @@ const VideoCard=({video, page})=>{
 								):null
 							}
 						</div>
-                    </div>
-                </div>
+
+
                 {/* </NavLink> */}
                 {/* <div className="icon-btn option-link" onClick={optionsHandler}>
 						
