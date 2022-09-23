@@ -32,7 +32,7 @@ const Footer=()=>{
         setIsHover(false);
     };
     return(
-    <div className={isHover?`footer-with-text h-2`:`footer h-2`} onMouseOver={handleMouseOver}
+    <div className={isHover?`footer footer-with-text h-2`:`footer h-2`} onMouseOver={handleMouseOver}
     onMouseOut={handleMouseOut}>
          
         

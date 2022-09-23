@@ -24,7 +24,7 @@ const Header=()=>{
             // flex-align-start flex-justify-start  header-text
             
             >
-                <h1 className="primary-color h-2 text-center">Watch Travel Stories with <span>Travel Tape</span></h1>
+                <h1 className="h-2 text-center">Watch Travel Stories with <span>Travel Tape</span></h1>
                 <Link to="/explore" className="btn primary-btn text-center no-link h-4">
                     Stream Now <AiFillCaretRight className="text-center"/>
                 </Link>

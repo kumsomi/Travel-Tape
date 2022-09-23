@@ -31,3 +31,20 @@
     text-decoration: underline;
     cursor: pointer;
 }
+.login-input-container{
+    position: relative;
+    display: flex;
+}
+.password-input{
+    width: 100%;
+}
+.show-psd-btn{
+    position: absolute;
+    top: 15%;
+    right: 0.5rem;
+    font-size: 2rem;
+    background: none;
+    outline: 0 0;
+    border: 0;
+    cursor: pointer;
+}

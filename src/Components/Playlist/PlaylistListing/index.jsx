@@ -19,7 +19,7 @@ const PlaylistListing=()=>{
         
         
         const cardImage = playlist.videos[0]
-			? `https://i.ytimg.com/vi/${playlist.videos[0]._id}/mqdefault.jpg`
+			? `https://i.ytimg.com/vi/${playlist.videos[0]._id}/hqdefault.jpg`
 			: nothumbnail;
 
             const handleDeletePlaylist = async (event) => {

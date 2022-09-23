@@ -6,7 +6,7 @@
     "first"
     "second"
     "third";
-    overflow-x: auto;
+    /* overflow-x: auto; */
     /* color: var(--primary-color); */
     
 }
@@ -73,7 +73,11 @@
         grid-area: third;
         
     }
-    /* Scroll bar */
+    
+
+}
+
+/* Scroll bar */
     /* width */
     ::-webkit-scrollbar {
         width: 2px;
@@ -93,6 +97,3 @@
     ::-webkit-scrollbar-thumb:hover {
         background: #555; 
     }
-
-}
-
