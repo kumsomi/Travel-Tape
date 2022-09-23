@@ -12,7 +12,9 @@ import { useAuth, useUserData, useVideos } from "../../../contexts";
 import { deleteVideoFromHistoryService, deleteVideoFromPlaylistService } from "../../../service";
 import { PlaylistModal } from "../../Playlist";
 import {MdDelete} from "react-icons/md";
+import { AiFillPlayCircle } from "react-icons/ai";
 import { Loader } from "../../Loader";
+import { height } from "@mui/system";
 
 
 const VideoCard=({video, page})=>{
@@ -158,10 +160,32 @@ const VideoCard=({video, page})=>{
 		playerVars: {
 			'origin':'https://localhost:3000',
 		},
-		width:'100%',
-		height:'100%',
+		// width:'100%',
+		// height:'100%',
+		width:'359px',
+		height:'210px',
 	};
 	const {videosLoading, videosError}=useVideos();
+	const [isHover, setIsHover]=useState(false);
+
+    const handleMouseOver = () => {
+        setIsHover(true);
+    };
+    
+    const handleMouseOut = () => {
+        setIsHover(false);
+    };
+
+    const [matches, setMatches] = useState(
+        window.matchMedia("(max-width: 767.98px)").matches
+      )
+    
+      useEffect(() => {
+        window
+        .matchMedia("(max-width: 767.98px)")
+        .addEventListener('change', e => setMatches( e.matches ));
+      }, []);
+      
     return(
         <>
 
@@ -173,11 +197,21 @@ const VideoCard=({video, page})=>{
             ):null}
 			
             <div className="video-card">
-                <NavLink to={`/explore/${videoId}`} className="no-link">
+                <NavLink to={`/explore/${videoId}`} className="no-link video-card-header" onMouseOver={handleMouseOver}
+                    onMouseOut={handleMouseOut}>
 
-                <div className="video-card-header">
+                <div className="video-card-img-container">
                     <img src={imgsrc} alt={`${videoTitle} cover`} className="video-img"/>
                 </div>
+				{isHover ? 
+                        <div className="title-container">
+                            <h2 className="h-2 card-title"><AiFillPlayCircle/></h2>
+                        </div>
+                        :(matches&& <div className="title-container">
+                            <h2 className="h-2 card-title"><AiFillPlayCircle/></h2>
+                        </div>
+                        )
+                     }  
 				{/* <div>
 				{videosLoading ? (<Loader/>
 				):videosError?(
