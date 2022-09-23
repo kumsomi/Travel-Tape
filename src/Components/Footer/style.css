@@ -15,7 +15,7 @@
     flex-direction: column;
     padding: 1rem;
     position: relative;
-    width: 150px;
+    /* width: 150px; */
     display: flex;
     justify-content: space-evenly;
     /* background-color: var(--primary-color); */
@@ -59,11 +59,11 @@
         text-align: center;
         padding: 1rem;
 
-        width: 100vw;
+        /* width: 100vw; */
         /* display: none; */
     }
     .footer{
-        width: 100vw;
+        /* width: 100vw; */
         /* padding: 0; */
     }
     

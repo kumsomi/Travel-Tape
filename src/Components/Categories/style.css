@@ -30,7 +30,8 @@
     justify-content: center;
     position: relative;
     border-radius: 1rem;
-    box-shadow: 0.2rem 0.2rem 0.5rem;
+    /* box-shadow: 0.2rem 0.2rem 0.5rem; */
+    box-shadow: 0.5rem 0.5rem 1rem var(--cta-color);
 }
 .card-header:hover{
     box-shadow: 0 0 0;
