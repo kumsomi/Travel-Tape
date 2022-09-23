@@ -13,6 +13,10 @@ const Profile=()=>{
 
     const {likes, watchlater, playlists, history } = useUserData();
 
+    // const cardImage = likes.videos[0]
+	// 		? `https://i.ytimg.com/vi/${likes.videos[0]._id}/hqdefault.jpg`
+	// 		: extrathumbnail;
+
     const {showToast}=useToast();
     const navigate=useNavigate();
     const handleLogoutUser = () => {

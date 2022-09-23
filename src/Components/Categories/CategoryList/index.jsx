@@ -8,7 +8,7 @@ const CategoryList=()=>{
     const {category, categoryLoading, categoryError } = useCategory();
     return(
         <div className="category-list">
-            <h2 className="h-2 primary-color category-heading">
+            <h2 className="h-2 category-heading">
                 Take a break and be a part of Travel Tape
             </h2>
             <h4 className="h-3 category-heading">Choose your category type</h4>

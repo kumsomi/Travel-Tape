@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth} from "../../../contexts";
 import { useToast, usePageTitle } from "../../../custom-hooks";
 import { loginService } from "../../../service";
-
+import {AiFillEye, AiFillEyeInvisible} from "react-icons/ai";
 import "../style.css";
 
 const Login = () => {  
@@ -17,6 +17,12 @@ const Login = () => {
 
 	const [formData, setFormData] = useState(initialFormData);
 
+	const [showPassword, setShowPassword]=useState(false);
+	const showPasswordIcon = showPassword?(
+	<AiFillEye/>):(<AiFillEyeInvisible/>);
+	const handleChangePasswordVisibility=()=>{
+		setShowPassword((prev)=>!prev);
+	}
 	const navigate = useNavigate();
 	const location = useLocation();
 
@@ -100,7 +106,7 @@ const Login = () => {
 			password: process.env.REACT_APP_GUEST_USER_PASSWORD,
 			rememberMe: true,
 		});
-		showToast("credentials set","info");
+		// showToast("credentials set","info");
 	};
 
 
@@ -125,16 +131,23 @@ const Login = () => {
             </div>
             <div class="form-div">
                 <label htmlFor="">Password</label>
-                <input 
-                    type="password" 
-                    id="input-login-psd"
-                    disabled={isLoggingIn}
-                    placeholder="********"
-                    name="password"
-                    value={password}
-                    onChange={handleFormDataChange}
-                    required            
-                    className="login-input primary-color"/>
+				<span className="login-input-container">
+					<input 
+						type= {`${showPassword?"text":"password"}`}
+						 
+						id="input-login-psd"
+						disabled={isLoggingIn}
+						placeholder="********"
+						name="password"
+						value={password}
+						onChange={handleFormDataChange}
+						required            
+						className="login-input password-input primary-color"
+					/>
+					<div className="show-psd-btn" onClick={handleChangePasswordVisibility}>
+						{showPasswordIcon}
+					</div>
+				</span>
             </div>
             <div class="form-div">
                 <label>
@@ -147,7 +160,7 @@ const Login = () => {
                         onChange={handleFormDataChange}
                     /> Remember me
                 </label>
-            <div class="psw" >Forgot password?</div>
+            {/* <div class="psw" >Forgot password?</div> */}
             </div>
             
             <input 

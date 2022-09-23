@@ -1,7 +1,9 @@
 import { useCategory } from "../../../contexts";
 import {Link} from "react-router-dom";
 import "../style.css";
-import { useState } from "react";
+import {BsPlayFill} from "react-icons/bs";
+import { AiFillPlayCircle } from "react-icons/ai";
+import { useEffect, useState } from "react";
 
 const CategoryItem=({category})=>{
 
@@ -25,8 +27,18 @@ const CategoryItem=({category})=>{
     const handleMouseOut = () => {
         setIsHover(false);
     };
-    
 
+    const [matches, setMatches] = useState(
+        window.matchMedia("(max-width: 767.98px)").matches
+      )
+    
+      useEffect(() => {
+        window
+        .matchMedia("(max-width: 767.98px)")
+        .addEventListener('change', e => setMatches( e.matches ));
+      }, []);
+      
+    let mql = window.matchMedia('(max-width: 991.98px)');
     return(
             <Link to={`/explore/`} 
                 className=""
@@ -39,11 +51,16 @@ const CategoryItem=({category})=>{
                     {/* <video autoPlay muted loop className="img-responsive hero-img">
                         <source src={backgroundVideo} type="video/mp4"/>
                     </video> */}
-                    {isHover && 
+                    {isHover ? 
                         <div className="title-container">
-                            <h2 className="h-2 card-title">{categoryName}</h2>
+                            <h2 className="h-2 card-title">{categoryName}<AiFillPlayCircle/></h2>
                         </div>
-                     } 
+                        :(matches&& <div className="title-container">
+                            <h2 className="h-2 card-title">{categoryName}<AiFillPlayCircle/></h2>
+                        </div>
+                        )
+                     }  
+                    {}
                 </div>
             </Link>
     );

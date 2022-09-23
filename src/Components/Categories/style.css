@@ -29,6 +29,11 @@
     align-content: center;
     justify-content: center;
     position: relative;
+    border-radius: 1rem;
+    box-shadow: 0.2rem 0.2rem 0.5rem;
+}
+.card-header:hover{
+    box-shadow: 0 0 0;
 }
 
 .title-container{
@@ -39,7 +44,7 @@
     justify-content: center;
     height: 100%;
     width: 100%;
-    background-color: rgba(33, 33, 33, 0.788);
+    background-color: rgba(33, 33, 33, 0.4);
     border-radius: 1rem;
 }
 .card-title{

@@ -14,7 +14,7 @@ const Signup=()=>{
 		email: "",
 		password: "",
 	};
-
+    const {authUser}=useAuth();
     const [formData, setFormData] = useState(initialFormData);
     const [isSigningUp, setIsSigningUp] = useState(false);
     
@@ -62,6 +62,21 @@ const Signup=()=>{
 		}
 	};
 
+    const handleSignupWithTestCredentials = (event) => {
+		setFormData({
+            
+            // process.env.REACT_APP_GUEST_USER_NAME,
+            
+            // process.env.REACT_APP_GUEST_USER_LAST_NAME,
+            firstName:process.env.REACT_APP_GUEST_USER_NAME,
+            lastName:process.env.REACT_APP_GUEST_USER_LAST_NAME,
+			email: process.env.REACT_APP_GUEST_USER_EMAIL,
+			password: process.env.REACT_APP_GUEST_USER_PASSWORD,
+			rememberMe: true,
+		});
+		// showToast("credentials set","info");
+	};
+    
     // const {
 	// 	firstNameError,
 	// 	lastNameError,
@@ -83,6 +98,8 @@ const Signup=()=>{
                     name="firstName"
                     onChange={handleFormDataChange}
                     value={firstName}
+                    placeholder="John"
+                    required
                 />
                 </div>
                 <div class="form-div">
@@ -91,6 +108,8 @@ const Signup=()=>{
                     name="lastName"
                     onChange={handleFormDataChange}
                     value={lastName}
+                    placeholder="Milan"
+                    required
                 />
                 </div>
                 <div class="form-div">
@@ -99,6 +118,9 @@ const Signup=()=>{
                     name="email"
                     onChange={handleFormDataChange}
                     value={email}
+                    placeholder="johnmilan@gmail.com"
+                    required
+
                 />
                 </div>
                 <div class="form-div">
@@ -108,8 +130,22 @@ const Signup=()=>{
                     name="password"
                     onChange={handleFormDataChange}
                     value={password}
+                    placeholder="****"
+                    required
                 />
                 </div>
+                {/* <div class="form-div">
+                <label>
+                    <input 
+                        type="checkbox" 
+                        id="checkbox-remember"
+                        checked={rememberMe}
+                        disabled={isLoggingIn}
+                        name="rememberMe"
+                        onChange={handleFormDataChange}
+                    /> Remember me
+                </label>
+            </div> */}
                 {/* <div class="form-div">
                 <label>
                 <input type="checkbox" name="remember"/> Remember me
@@ -117,8 +153,13 @@ const Signup=()=>{
                 <div class="psw" >Forgot password?</div>
                 </div> */}
                 <button className="btn primary-btn login-btn">Signup</button>
+                <button className="btn secondary-btn login-btn"
+                    onClick={handleSignupWithTestCredentials}
+                >
+                    Signup with Test Credential</button>
+            
                 <Link className="new-account" to="/login">
-                <span >Already have an account</span>
+                <span>Already have an account</span>
                 </Link>
             </form>
         </div>
