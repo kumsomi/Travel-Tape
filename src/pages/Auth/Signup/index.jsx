@@ -56,7 +56,7 @@ const Signup=()=>{
 		} catch (error) {
 			setIsSigningUp(false);
 			if (error.message.includes("422")) {
-				showToast("Email already registered.", "error");
+				showToast("This email is already registered. Try login.", "success");
 			} else
 				showToast("Sign up failed. Please try again later.", "error");
 		}
